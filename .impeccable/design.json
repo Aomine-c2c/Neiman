@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 2,
+  "system": "NEIMAN OS Design System",
+  "creativeNorthStar": "The Sovereign Command Deck",
+  "elevation": {
+    "rest": "none",
+    "hover": "0 2px 8px -1px rgba(0, 0, 0, 0.06)",
+    "popover": "0 4px 20px -2px rgba(0, 0, 0, 0.1), 0 2px 6px -1px rgba(0, 0, 0, 0.06)"
+  },
+  "rules": [
+    "The Rarity Rule: Primary accent <= 10% of any operational viewport.",
+    "The No-Grey-On-Color Rule: Secondary text on tinted surfaces derives from foreground/hue, never gray.",
+    "The No-Eyebrow Rule: No kicker labels above headings.",
+    "The Tabular Numbers Rule: All telemetry, timestamps, countdowns, and currencies enforce tabular-nums."
+  ],
+  "breakpoints": {
+    "sm": "640px",
+    "md": "768px",
+    "lg": "1024px",
+    "xl": "1280px",
+    "2xl": "1536px"
+  }
+}

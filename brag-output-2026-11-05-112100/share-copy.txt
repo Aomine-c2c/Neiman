@@ -1,0 +1,3 @@
+Introducing NEIMAN: the AI-native platform for organizational intelligence and automation.
+A unified IDE-style split dock for CTO directives, swarm workforce orchestration, multi-provider LLM routing, and human-in-the-loop governance gates — built with Next.js 14, Tauri, FastAPI, and LanceDB.
+

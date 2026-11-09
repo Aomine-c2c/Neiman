@@ -1,0 +1,14 @@
+apiVersion: v2
+name: NEIMAN-api
+description: NEIMAN API Helm Chart
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+keywords:
+  - NEIMAN
+  - api
+  - fastapi
+  - autonomous-organization
+maintainers:
+  - name: NEIMAN Team
+    email: team@NEIMAN.example.com

@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Secrets / local environment
+# In this private repository, apps/api/.env is distributed with provider credentials.
+.env
+.env.local
+.env.*.local
+!.env.example
+!apps/api/.env
+apikeys.md
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+.turbo/
+*.tsbuildinfo
+
+# Docker
+*.log
+
+# Database
+*.db
+*.sqlite3
+
+# Alembic (don't ignore versions, DO ignore pyc)
+apps/api/alembic/__pycache__/
+
+# Build artifacts
+apps/api/.venv/
+
+# Rust
+target/
+**/target/
+Cargo.lock
+
+# Vector store
+.vectors_lancedb/
+*.lancedb/

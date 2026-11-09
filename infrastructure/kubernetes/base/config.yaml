@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: NEIMAN-secrets
+  namespace: NEIMAN
+type: Opaque
+stringData:
+  # These should be populated from Vault/External Secrets in production
+  DATABASE_URL: "postgresql+asyncpg://NEIMAN:CHANGE_ME@postgresql.NEIMAN-database.svc.cluster.local:5432/NEIMAN"
+  REDIS_URL: "redis://redis.NEIMAN-database.svc.cluster.local:6379/0"
+  SECRET_KEY: "CHANGE_ME_GENERATE_WITH_OPENSSL_RAND_HEX_32"
+  OPENAI_API_KEY: ""
+  ANTHROPIC_API_KEY: ""
+  GOOGLE_API_KEY: ""
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: NEIMAN-config
+  namespace: NEIMAN
+data:
+  ENVIRONMENT: "production"
+  DEBUG: "false"
+  APP_NAME: "NEIMAN"
+  APP_VERSION: "0.1.0"
+  ACCESS_TOKEN_EXPIRE_MINUTES: "15"
+  REFRESH_TOKEN_EXPIRE_DAYS: "7"
+  CORS_ORIGINS: '["https://NEIMAN.example.com"]'
+  RATE_LIMIT_REQUESTS: "1000"
+  RATE_LIMIT_WINDOW: "60"

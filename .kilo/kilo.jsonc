@@ -1,0 +1,102 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "provider": {
+    "kilocode": {
+      "name": "Kilo Code Gateway",
+      "npm": "@ai-sdk/openai-compatible",
+      "baseURL": "https://api.kilo.ai/api/gateway",
+      "models": {
+        "google/gemini-3-flash-preview": {
+          "name": "Gemini 3 Flash Preview"
+        },
+        "anthropic/claude-3.7-sonnet": {
+          "name": "Claude 3.7 Sonnet"
+        },
+        "qwen/qwen-2.5-coder-32b-instruct": {
+          "name": "Qwen 2.5 Coder 32B Instruct"
+        },
+        "deepseek/deepseek-r1": {
+          "name": "DeepSeek R1 Reasoner"
+        }
+      }
+    },
+    "deepseek": {
+      "name": "DeepSeek Cloud",
+      "npm": "@ai-sdk/openai-compatible",
+      "baseURL": "https://api.deepseek.com/v1",
+      "models": {
+        "deepseek-chat": {
+          "name": "DeepSeek-V3"
+        },
+        "deepseek-reasoner": {
+          "name": "DeepSeek-R1"
+        }
+      }
+    },
+    "openrouter": {
+      "name": "OpenRouter Gateway",
+      "npm": "@ai-sdk/openai-compatible",
+      "baseURL": "https://openrouter.ai/api/v1",
+      "models": {
+        "openrouter/auto": {
+          "name": "OpenRouter Auto Router"
+        }
+      }
+    },
+    "ollama": {
+      "name": "Ollama Local Node",
+      "npm": "@ai-sdk/openai-compatible",
+      "baseURL": "http://localhost:11434/v1",
+      "models": {
+        "llama3.3:70b": {
+          "name": "Llama 3.3 70B"
+        },
+        "qwen2.5-coder:32b": {
+          "name": "Qwen 2.5 Coder 32B"
+        }
+      }
+    },
+    "groq": {
+      "name": "Groq LPU Accelerator",
+      "npm": "@ai-sdk/openai-compatible",
+      "baseURL": "https://api.groq.com/openai/v1",
+      "models": {
+        "llama-3.3-70b-versatile": {
+          "name": "Llama 3.3 70B Versatile"
+        }
+      }
+    },
+    "mistral": {
+      "name": "Mistral AI",
+      "npm": "@ai-sdk/openai-compatible",
+      "baseURL": "https://api.mistral.ai/v1",
+      "models": {
+        "codestral-latest": {
+          "name": "Codestral 2501"
+        }
+      }
+    }
+  },
+  "permission": {
+    "bash": {
+      "*": "allow"
+    },
+    "external_directory": "allow",
+    "read": "allow"
+  },
+  "experimental": {
+    "image_generation": true,
+    "batch_tool": true,
+    "native_notebook_tools": true,
+    "continue_loop_on_deny": true
+  },
+  "web_search": true,
+  "indexing": {
+    "enabled": true,
+    "provider": "ollama",
+    "ollama": {
+      "baseUrl": "http://localhost:11434"
+    },
+    "model": "mxbai-embed-large"
+  }
+}

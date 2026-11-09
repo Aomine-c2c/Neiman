@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <meta name="theme-color" content="#030712" />
+    <title>NEIMAN — Intelligence in motion</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --canvas: #030712;
+        --panel: #071321;
+        --panel-raised: #0b1c2a;
+        --ink: #f8fafc;
+        --muted: #a9c2d2;
+        --dim: #7390a1;
+        --cyan: #00f2fe;
+        --border: #16445a;
+        --amber: #f2bb4b;
+        --mono: "JetBrains Mono", Consolas, monospace;
+      }
+      * { box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; margin: 0; overflow: hidden; background: var(--canvas); }
+      body { color: var(--ink); font-family: var(--mono); -webkit-font-smoothing: antialiased; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--canvas); }
+      .scene {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        padding: 84px 124px;
+        background: radial-gradient(ellipse at 76% 22%, rgba(0, 242, 254, .08), transparent 34%), #030712;
+      }
+      #scene2, #scene3, #scene4 { opacity: 0; }
+      .scene-content { display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; gap: 28px; }
+      .kicker { display: flex; align-items: center; gap: 14px; color: var(--cyan); font-size: 28px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+      .signal { width: 10px; height: 10px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 15px rgba(0,242,254,.55); }
+      .display { max-width: 1450px; margin: 0; font-size: 82px; line-height: 1.06; font-weight: 650; letter-spacing: -.055em; }
+      .display .accent { color: var(--cyan); }
+      .subline { max-width: 1080px; margin: 0; color: var(--muted); font-size: 28px; line-height: 1.5; font-weight: 350; }
+      .rule { width: 220px; height: 3px; background: var(--cyan); }
+      .wordmark { display: flex; align-items: center; gap: 24px; color: var(--ink); font-size: 58px; font-weight: 700; letter-spacing: .15em; }
+      .wordmark-mark { display: grid; width: 76px; height: 76px; place-items: center; border: 1px solid rgba(0,242,254,.75); border-radius: 18px; color: var(--cyan); font-size: 42px; box-shadow: inset 0 0 18px rgba(0,242,254,.12), 0 0 24px rgba(0,242,254,.12); }
+
+      /* Scene 2: the real Control Room vocabulary, presented as a clearly labeled preview. */
+      #scene2 { padding: 70px 92px; }
+      .control-room { display: flex; flex-direction: column; width: 100%; height: 100%; gap: 22px; }
+      .control-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
+      .control-head .display { font-size: 58px; }
+      .preview-badge { flex: 0 0 auto; border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; color: var(--muted); font-size: 28px; letter-spacing: .04em; }
+      .control-grid { display: grid; flex: 1; min-height: 0; grid-template-columns: 1fr 1.55fr 1fr; grid-template-rows: 1fr 1.15fr; gap: 16px; }
+      .panel { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid rgba(0,242,254,.37); border-radius: 10px; background: linear-gradient(145deg, rgba(7,19,33,.98), rgba(5,14,26,.98)); box-shadow: inset 0 1px rgba(255,255,255,.025); }
+      .panel-head { display: flex; align-items: center; min-height: 82px; gap: 12px; border-bottom: 1px solid rgba(0,242,254,.18); padding: 12px 18px; color: var(--cyan); font-size: 28px; font-weight: 650; line-height: 1.2; letter-spacing: .015em; text-transform: uppercase; }
+      .panel-dot { width: 9px; height: 9px; flex: 0 0 9px; border-radius: 50%; background: var(--cyan); }
+      .panel-body { display: flex; flex: 1; flex-direction: column; justify-content: center; gap: 14px; padding: 20px; }
+      .panel-copy { margin: 0; color: var(--muted); font-size: 28px; line-height: 1.42; }
+      .micro-label { color: var(--dim); font-size: 28px; letter-spacing: .06em; text-transform: uppercase; }
+      .rowline { display: flex; align-items: center; gap: 20px; border-bottom: 1px solid rgba(115,144,161,.16); padding: 12px 0; color: #d9e9f0; font-size: 28px; }
+      .directive { grid-column: 2; grid-row: 1 / span 2; }
+      .directive .panel-body { justify-content: space-between; }
+      .directive-box { border: 1px solid rgba(0,242,254,.35); border-radius: 8px; background: rgba(0,242,254,.035); padding: 22px; color: var(--muted); font-size: 28px; line-height: 1.4; }
+      .directive-button { display: inline-flex; align-items: center; gap: 10px; width: fit-content; border: 1px solid rgba(0,242,254,.52); border-radius: 5px; padding: 12px 16px; color: var(--cyan); font-size: 28px; letter-spacing: .03em; }
+
+      /* Scene 3: a conceptual view of product governance, not a report of completed work. */
+      #scene3 { padding: 76px 110px; }
+      .flow { display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; gap: 22px; width: 100%; margin-top: 22px; }
+      .flow-step { position: relative; display: flex; min-height: 198px; flex-direction: column; justify-content: space-between; border: 1px solid var(--border); border-radius: 10px; padding: 25px 24px; background: rgba(7,19,33,.91); }
+      .flow-step:not(:last-child)::after { position: absolute; top: 50%; left: calc(100% + 2px); width: 20px; height: 2px; background: var(--cyan); content: ""; }
+      .flow-step .step-index { color: var(--dim); font-size: 28px; letter-spacing: .03em; }
+      .flow-step strong { color: var(--ink); font-size: 32px; letter-spacing: .01em; }
+      .flow-step.review { border-color: rgba(242,187,75,.68); box-shadow: inset 0 0 25px rgba(242,187,75,.055); }
+      .flow-step.review strong { color: var(--amber); }
+      .flow-caption { margin: 0; color: var(--muted); font-size: 32px; line-height: 1.4; }
+      .flow-caption strong { color: var(--ink); font-weight: 550; }
+
+      #scene4 { justify-content: center; padding-left: 148px; }
+      .close-stack { display: flex; flex-direction: column; align-items: flex-start; gap: 34px; }
+      .close-line { max-width: 1250px; margin: 0; color: var(--muted); font-size: 36px; line-height: 1.4; }
+      .close-tagline { margin: 0; color: var(--cyan); font-size: 32px; letter-spacing: .06em; }
+      .scene-noise { position: absolute; right: 110px; top: 105px; width: 220px; height: 220px; border: 1px solid rgba(0,242,254,.12); border-radius: 50%; }
+      .scene-noise::before, .scene-noise::after { position: absolute; inset: 24px; border: 1px solid rgba(0,242,254,.1); border-radius: 50%; content: ""; }
+      .scene-noise::after { inset: 58px; border-color: rgba(0,242,254,.13); }
+      .scene-noise i { position: absolute; top: 50%; left: 50%; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); transform: translate(-50%, -50%); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20" data-width="1920" data-height="1080">
+      <section id="scene1" class="scene" aria-label="Build the organization. Keep the operator in charge.">
+        <div class="scene-content">
+          <div id="s1-kicker" class="kicker"><span class="signal"></span>NEIMAN / OPERATIONS OS</div>
+          <div id="s1-rule" class="rule"></div>
+          <h1 id="s1-title" class="display">Build the organization.<br /><span class="accent">Keep the operator in charge.</span></h1>
+          <p id="s1-subline" class="subline">AI operations, visible and reviewable.</p>
+        </div>
+      </section>
+
+      <section id="scene2" class="scene" data-layout-allow-occlusion data-hold aria-label="NEIMAN Control Room workspace preview">
+        <div class="control-room">
+          <div class="control-head">
+            <div>
+              <div id="s2-kicker" class="kicker"><span class="signal"></span>NEIMAN / CONTROL ROOM</div>
+              <h2 id="s2-title" class="display">Operational state, in one view.</h2>
+            </div>
+            <div id="s2-preview" class="preview-badge">WORKSPACE PREVIEW · ILLUSTRATIVE</div>
+          </div>
+          <div class="control-grid">
+            <article id="s2-workforce" class="panel">
+              <div class="panel-head"><span class="panel-dot"></span>Swarm Workforce</div>
+              <div class="panel-body">
+                <div class="rowline"><span>Agent profiles &amp; roles</span></div>
+                <p class="panel-copy">Review configured agents and the work assigned to them.</p>
+              </div>
+            </article>
+            <article id="s2-directives" class="panel directive">
+              <div class="panel-head"><span class="panel-dot"></span>CTO Directives &amp; Interaction Console</div>
+              <div class="panel-body">
+                <p class="panel-copy">Send a directive. Follow its response in the Control Room.</p>
+                <div class="directive-box">Directives use your configured agents and governance workflow.</div>
+                <div class="directive-button"><span>›</span> SEND CTO DIRECTIVE</div>
+              </div>
+            </article>
+            <article id="s2-audit" class="panel">
+              <div class="panel-head"><span class="panel-dot"></span>Live Audit Telemetry</div>
+              <div class="panel-body">
+                <p class="panel-copy">Activity stream and recorded decisions.</p>
+              </div>
+            </article>
+            <article id="s2-approval" class="panel">
+              <div class="panel-head"><span class="panel-dot"></span>CEO Approval Queue</div>
+              <div class="panel-body"><p class="panel-copy">Review pending decisions. Approve or reject.</p></div>
+            </article>
+            <article id="s2-health" class="panel">
+              <div class="panel-head"><span class="panel-dot"></span>System &amp; Provider Health</div>
+              <div class="panel-body"><p class="panel-copy">Provider connectivity and system resources.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene3" class="scene" data-layout-allow-occlusion aria-label="Directive, work, human review, audit trail">
+        <div class="scene-content">
+          <div id="s3-kicker" class="kicker"><span class="signal"></span>VISIBLE GOVERNANCE</div>
+          <h2 id="s3-title" class="display">Work can move.<br /><span class="accent">Authority stays human.</span></h2>
+          <div class="flow" aria-label="Illustrative workflow sequence">
+            <div id="s3-step1" class="flow-step"><span class="step-index">01 / INPUT</span><strong>DIRECTIVE</strong></div>
+            <div id="s3-step2" class="flow-step"><span class="step-index">02 / PROCESS</span><strong>WORK</strong></div>
+            <div id="s3-step3" class="flow-step review"><span class="step-index">03 / CONTROL</span><strong>HUMAN REVIEW</strong></div>
+            <div id="s3-step4" class="flow-step"><span class="step-index">04 / RECORD</span><strong>AUDIT TRAIL</strong></div>
+          </div>
+          <p id="s3-caption" class="flow-caption">Illustrative flow. Operators review sensitive actions.</p>
+        </div>
+      </section>
+
+      <section id="scene4" class="scene" data-layout-allow-occlusion aria-label="NEIMAN — Intelligence in motion">
+        <span class="scene-noise" aria-hidden="true"><i></i></span>
+        <div class="scene-content">
+          <div class="close-stack">
+            <div id="s4-mark" class="wordmark"><span class="wordmark-mark">N</span>NEIMAN</div>
+            <div id="s4-rule" class="rule"></div>
+            <p id="s4-line" class="close-line">Agent operations. Human approvals. Audit visibility.</p>
+            <p id="s4-tagline" class="close-tagline">INTELLIGENCE IN MOTION.</p>
+          </div>
+        </div>
+      </section>
+
+      <audio id="music-bed" data-start="0" data-duration="20" data-track-index="10" data-volume="0.18" data-fade-in="0.7" data-fade-out="1.2" src="assets/music/happy-beats-business-moves-vol-12-by-ende-dot-app.mp3"></audio>
+      <audio id="review-click" data-start="10.35" data-duration="0.01" data-track-index="11" data-volume="0.42" src="assets/sfx/interface/click_003.ogg"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      tl.from("#s1-rule", { scaleX: 0, transformOrigin: "left center", duration: 0.65, ease: "power2.out" }, 0.35);
+      tl.from("#s1-title", { y: 34, opacity: 0, duration: 0.7, ease: "expo.out" }, 0.5);
+      tl.from("#s1-subline", { y: 16, opacity: 0, duration: 0.5, ease: "power2.out" }, 1.05);
+
+      tl.to("#scene1", { opacity: 0, duration: 0.4, ease: "sine.inOut" }, 3.2);
+      tl.fromTo("#scene2", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "sine.inOut" }, 3.2);
+      tl.from("#s2-kicker", { y: 16, opacity: 0, duration: 0.45, ease: "power2.out" }, 3.38);
+      tl.from("#s2-title", { y: 24, opacity: 0, duration: 0.55, ease: "expo.out" }, 3.55);
+      tl.from("#s2-preview", { x: 18, opacity: 0, duration: 0.4, ease: "power3.out" }, 3.72);
+      tl.from(["#s2-workforce", "#s2-directives", "#s2-audit", "#s2-approval", "#s2-health"], { y: 22, opacity: 0, duration: 0.5, stagger: 0.12, ease: "power3.out" }, 3.9);
+
+      tl.to("#scene2", { opacity: 0, duration: 0.4, ease: "sine.inOut" }, 8.2);
+      tl.fromTo("#scene3", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "sine.inOut" }, 8.2);
+      tl.from("#s3-kicker", { y: 14, opacity: 0, duration: 0.45, ease: "power2.out" }, 8.38);
+      tl.from("#s3-title", { y: 26, opacity: 0, duration: 0.55, ease: "expo.out" }, 8.5);
+      tl.from(["#s3-step1", "#s3-step2", "#s3-step3", "#s3-step4"], { y: 24, opacity: 0, duration: 0.5, stagger: 0.17, ease: "back.out(1.2)" }, 8.86);
+      tl.from("#s3-caption", { y: 15, opacity: 0, duration: 0.48, ease: "power1.out" }, 9.7);
+
+      tl.to("#scene3", { opacity: 0, duration: 0.45, ease: "sine.inOut" }, 13.15);
+      tl.fromTo("#scene4", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "sine.inOut" }, 13.15);
+      tl.from("#s4-mark", { y: 22, opacity: 0, duration: 0.65, ease: "expo.out" }, 13.42);
+      tl.from("#s4-rule", { scaleX: 0, transformOrigin: "left center", duration: 0.6, ease: "power2.out" }, 13.72);
+      tl.from("#s4-line", { y: 16, opacity: 0, duration: 0.55, ease: "power2.out" }, 14.0);
+      tl.from("#s4-tagline", { y: 13, opacity: 0, duration: 0.5, ease: "power1.out" }, 14.42);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: NEIMAN
+
+resources:
+  - ../../base/namespaces.yaml
+  - ../../base/config.yaml
+  - ../../base/NEIMAN-api.yaml
+  - ../../base/NEIMAN-web.yaml
+  - ../../base/ingress.yaml
+  - ../../base/hpa.yaml
+  - ../../base/rbac.yaml
+
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: NEIMAN-api
+        namespace: NEIMAN
+      spec:
+        replicas: 5
+        template:
+          spec:
+            containers:
+              - name: api
+                resources:
+                  requests:
+                    cpu: "1000m"
+                    memory: "1Gi"
+                  limits:
+                    cpu: "4000m"
+                    memory: "4Gi"
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: NEIMAN-web
+        namespace: NEIMAN
+      spec:
+        replicas: 5
+        template:
+          spec:
+            containers:
+              - name: web
+                resources:
+                  requests:
+                    cpu: "500m"
+                    memory: "512Mi"
+                  limits:
+                    cpu: "2000m"
+                    memory: "2Gi"
+
+configMapGenerator:
+  - name: NEIMAN-config
+    behavior: merge
+    literals:
+      - ENVIRONMENT=production
+      - DEBUG=false
+
+images:
+  - name: ghcr.io/ORG/NEIMAN-api
+    newTag: v1.0.0
+  - name: ghcr.io/ORG/NEIMAN-web
+    newTag: v1.0.0
+
+commonLabels:
+  environment: production
+  managed-by: kustomize

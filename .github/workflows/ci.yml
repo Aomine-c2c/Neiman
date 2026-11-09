@@ -1,0 +1,307 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME_API: ${{ github.repository }}/api
+  IMAGE_NAME_WEB: ${{ github.repository }}/web
+
+jobs:
+  # ========================================
+  # LINT & TYPE CHECK
+  # ========================================
+  lint:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: 'latest'
+
+      - name: Install API dependencies
+        working-directory: ./apps/api
+        run: uv sync --extra dev
+
+      - name: Run Ruff
+        working-directory: ./apps/api
+        run: uv run ruff check nexora/ tests/
+
+      - name: Run MyPy
+        working-directory: ./apps/api
+        run: uv run mypy nexora/
+
+      - name: Run Ruff format check
+        working-directory: ./apps/api
+        run: uv run ruff format --check nexora/ tests/
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install Web dependencies
+        working-directory: ./apps/web
+        run: npm ci
+
+      - name: Run ESLint
+        working-directory: ./apps/web
+        run: npm run lint
+
+      - name: Run TypeScript check
+        working-directory: ./apps/web
+        run: npm run type-check
+
+      - name: Run Prettier check
+        working-directory: ./apps/web
+        run: npx prettier --check src/
+
+  # ========================================
+  # API TESTS
+  # ========================================
+  test-api:
+    name: API Tests
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: NEIMAN
+          POSTGRES_PASSWORD: NEIMAN_test
+          POSTGRES_DB: NEIMAN_test
+        ports:
+          - "5432:5432"
+        options: >-
+          --health-cmd "pg_isready -U NEIMAN"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        ports:
+          - "6379:6379"
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: 'latest'
+
+      - name: Install API dependencies
+        working-directory: ./apps/api
+        run: uv sync --extra dev
+
+      - name: Run database migrations
+        working-directory: ./apps/api
+        env:
+          DATABASE_URL: postgresql+asyncpg://NEIMAN:NEIMAN_test@localhost:5432/NEIMAN_test
+        run: uv run alembic upgrade head
+
+      - name: Run API tests
+        working-directory: ./apps/api
+        env:
+          DATABASE_URL: postgresql+asyncpg://NEIMAN:NEIMAN_test@localhost:5432/NEIMAN_test
+          REDIS_URL: redis://localhost:6379/0
+          SECRET_KEY: test-secret-key
+          DEBUG: "true"
+          ENVIRONMENT: test
+        run: uv run pytest tests/ -v --tb=short
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./apps/api/coverage.xml
+          flags: api
+
+  # ========================================
+  # WEB TESTS
+  # ========================================
+  test-web:
+    name: Web Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install Web dependencies
+        working-directory: ./apps/web
+        run: npm ci
+
+      - name: Run Web tests
+        working-directory: ./apps/web
+        run: npm test -- --coverage
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./apps/web/coverage/lcov.info
+          flags: web
+
+  # ========================================
+  # BUILD DOCKER IMAGES
+  # ========================================
+  build-api:
+    name: Build API Docker Image
+    needs: [lint, test-api]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for API
+        id: meta-api
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_API }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push API image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./apps/api
+          push: true
+          tags: ${{ steps.meta-api.outputs.tags }}
+          labels: ${{ steps.meta-api.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  build-web:
+    name: Build Web Docker Image
+    needs: [lint, test-web]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for Web
+        id: meta-web
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_WEB }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push Web image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./apps/web
+          push: true
+          tags: ${{ steps.meta-web.outputs.tags }}
+          labels: ${{ steps.meta-web.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ========================================
+  # DEPLOY (staging)
+  # ========================================
+  deploy-staging:
+    name: Deploy to Staging
+    needs: [build-api, build-web]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    # NOTE: Create 'staging' environment in GitHub repo Settings > Environments
+    # before enabling environment protection rules in this job.
+    permissions:
+      contents: read
+      packages: read
+
+    steps:
+      - name: Deploy to staging
+        run: |
+          echo "Deploy to staging environment"
+          # Add your staging deployment commands here
+          # Example: kubectl apply -f k8s/staging/
+
+  # ========================================
+  # DEPLOY (production)
+  # ========================================
+  deploy-production:
+    name: Deploy to Production
+    needs: [build-api, build-web]
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    # NOTE: Create 'production' environment in GitHub repo Settings > Environments
+    # before enabling environment protection rules in this job.
+    permissions:
+      contents: read
+      packages: read
+
+    steps:
+      - name: Deploy to production
+        run: |
+          echo "Deploy to production environment"
+          # Add your production deployment commands here
+          # Example: kubectl apply -f k8s/production/

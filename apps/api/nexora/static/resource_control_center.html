@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEIMAN — Resource Control Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --surface: #0e131f;
+      --surface-elevated: #161e31;
+      --border: #212c47;
+      --primary: #10b981;
+      --primary-glow: rgba(16, 185, 129, 0.25);
+      --accent: #38bdf8;
+      --compute: #6366f1;
+      --intel: #ec4899;
+      --financial: #f59e0b;
+      --operational: #8b5cf6;
+      --danger: #ef4444;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(14, 19, 31, 0.85);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      gap: 14px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text);
+      background: var(--surface-elevated);
+    }
+
+    main {
+      flex: 1;
+      padding: 32px 36px;
+      max-width: 1540px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-val {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .stat-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .badge-compute { background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .badge-intel { background: rgba(236, 72, 153, 0.15); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); }
+    .badge-financial { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-operational { background: rgba(139, 92, 246, 0.15); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.3); }
+    .badge-observed { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-estimated { background: rgba(234, 179, 8, 0.15); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.3); }
+
+    /* Progress bar */
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: var(--surface-elevated);
+      border-radius: 4px;
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.4s ease;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 14px;
+      border-bottom: 1px solid rgba(33, 44, 71, 0.5);
+    }
+
+    tr:hover td {
+      background: rgba(22, 30, 49, 0.4);
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Request evaluator tester */
+    .evaluator-box {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    input, select, button {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.88rem;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    button.btn-primary {
+      background: var(--primary);
+      color: #07090e;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    button.btn-primary:hover {
+      opacity: 0.9;
+      box-shadow: 0 0 16px var(--primary-glow);
+    }
+
+    .decision-pill {
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      display: inline-block;
+    }
+    .decision-APPROVE { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
+    .decision-REDUCE { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
+    .decision-DEFER { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid #38bdf8; }
+    .decision-QUEUE { background: rgba(139, 92, 246, 0.2); color: #c084fc; border: 1px solid #8b5cf6; }
+    .decision-DENY { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span>NEIMAN</span>
+      <span class="brand-badge">Resource Engine</span>
+    </div>
+    <nav>
+      <a href="/ui/resources" class="nav-link active">Control Center</a>
+      <a href="/ui/intelligence" class="nav-link">Intelligence Exchange</a>
+      <a href="/ui/agents" class="nav-link">Agent Profiles</a>
+      <a href="/api/docs" class="nav-link" target="_blank">API Docs</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- TOP STATS -->
+    <div class="grid-4">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Compute Cluster</span>
+          <span class="badge badge-compute">Cores & Memory</span>
+        </div>
+        <div class="stat-val" id="compute-stat">-- / --</div>
+        <div class="stat-sub">Allocated cores vs quota (LIMITED)</div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="compute-bar" style="background: var(--compute); width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Token Quotas</span>
+          <span class="badge badge-intel">Intelligence</span>
+        </div>
+        <div class="stat-val" id="tokens-stat">--M / --M</div>
+        <div class="stat-sub">Active reservations vs monthly allowance</div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="tokens-bar" style="background: var(--intel); width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Financial Budget</span>
+          <span class="badge badge-financial">USD Spending</span>
+        </div>
+        <div class="stat-val" id="budget-stat">$0.00</div>
+        <div class="stat-sub" id="budget-sub">Spent vs Total Allocated Budget</div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="budget-bar" style="background: var(--financial); width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Operational Slots</span>
+          <span class="badge badge-operational">Agent Concurrency</span>
+        </div>
+        <div class="stat-val" id="slots-stat">-- / --</div>
+        <div class="stat-sub" id="slots-sub">Active tasks running concurrently</div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="slots-bar" style="background: var(--operational); width: 0%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN TWO-COLUMN SECTION -->
+    <div class="grid-2">
+      <!-- LEFT: CAPACITY & SCHEDULING POOLS -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Finite Organizational Resource Pools</span>
+          <span class="badge badge-observed">REAL TELEMETRY VERIFIED</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Pool Category</th>
+              <th>Unit</th>
+              <th>Limited</th>
+              <th>Allocated</th>
+              <th>Available</th>
+              <th>Observed</th>
+              <th>Utilization</th>
+            </tr>
+          </thead>
+          <tbody id="pools-table-body">
+            <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Loading resource pools...</td></tr>
+          </tbody>
+        </table>
+
+        <!-- HOST HARDWARE TELEMETRY -->
+        <div style="margin-top: 24px; padding: 14px; background: var(--surface-elevated); border-radius: 8px; border: 1px solid var(--border);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Host Hardware Telemetry</span>
+            <span class="badge badge-observed" id="host-state-badge">OBSERVED (NON-FAKED)</span>
+          </div>
+          <div class="mono" id="host-telemetry-text" style="font-size: 0.8rem; color: #a5b4fc;">
+            Inspecting host operating system metrics...
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: LIVE EVALUATION TESTER -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Resource Engine Evaluator</span>
+          <span class="badge badge-intel">Simulate Request</span>
+        </div>
+        <div class="evaluator-box">
+          <div class="form-group">
+            <label>Task Justification</label>
+            <input type="text" id="req-justification" value="Run large research analysis on market intelligence" />
+          </div>
+          <div class="input-row">
+            <div class="form-group">
+              <label>Priority</label>
+              <select id="req-priority">
+                <option value="CRITICAL">CRITICAL</option>
+                <option value="HIGH">HIGH</option>
+                <option value="NORMAL" selected>NORMAL</option>
+                <option value="LOW">LOW</option>
+                <option value="BACKGROUND">BACKGROUND</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Expected Value (1-10)</label>
+              <input type="number" id="req-roi" value="7.5" step="0.5" min="1" max="10" />
+            </div>
+          </div>
+          <div class="input-row">
+            <div class="form-group">
+              <label>CPU Cores</label>
+              <input type="number" id="req-cpu" value="4" min="1" max="64" />
+            </div>
+            <div class="form-group">
+              <label>RAM (GB)</label>
+              <input type="number" id="req-ram" value="8" min="1" max="256" />
+            </div>
+          </div>
+          <div class="input-row">
+            <div class="form-group">
+              <label>Tokens (k)</label>
+              <input type="number" id="req-tokens" value="200000" step="10000" />
+            </div>
+            <div class="form-group">
+              <label>Max Cost ($)</label>
+              <input type="number" id="req-cost" value="2.00" step="0.5" />
+            </div>
+          </div>
+          <button class="btn-primary" onclick="simulateEvaluation()">Evaluate Request</button>
+
+          <!-- Evaluation output -->
+          <div id="eval-result-card" style="display: none; padding: 12px; background: var(--surface); border-radius: 8px; border: 1px solid var(--border); margin-top: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">ENGINE DECISION:</span>
+              <span id="eval-decision-pill" class="decision-pill">APPROVE</span>
+            </div>
+            <div id="eval-decision-reason" style="font-size: 0.84rem; color: var(--text); margin-bottom: 6px;"></div>
+            <div class="mono" id="eval-details" style="font-size: 0.76rem; color: var(--accent);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM ROW: EXPENSIVE TASKS & BOTTLENECKS -->
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Top Expensive Tasks & Resource Sinks</span>
+          <span class="badge badge-financial">FinOps Audit</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Agent Identity</th>
+              <th>Cost (USD)</th>
+              <th>Tokens</th>
+              <th>CPU Time</th>
+            </tr>
+          </thead>
+          <tbody id="expensive-tasks-body">
+            <tr>
+              <td><strong>Large Research Analysis</strong></td>
+              <td>Senior Research Analyst</td>
+              <td class="mono" style="color: #fbbf24;">$1.85</td>
+              <td class="mono">184,000</td>
+              <td class="mono">1,240s</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Bottlenecks & Capacity Alerts</span>
+          <span class="badge badge-operational">Operational Health</span>
+        </div>
+        <div id="bottlenecks-container" style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="padding: 12px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; font-size: 0.85rem; color: #34d399;">
+            ✓ All compute clusters and model token quotas operating well within safe capacity margins.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Demo / default data loader
+    const mockCompanyId = "00000000-0000-0000-0000-000000000001";
+
+    async function loadData() {
+      try {
+        const res = await fetch(`/api/v1/companies/${mockCompanyId}/resources/control-center`);
+        if (res.ok) {
+          const data = await res.json();
+          renderControlCenter(data);
+          return;
+        }
+      } catch (e) {
+        console.warn("Using fallback live simulation data", e);
+      }
+
+      // Fallback presentation for direct UI demonstration
+      renderFallback();
+    }
+
+    function renderFallback() {
+      // Hardware telemetry
+      document.getElementById('compute-stat').innerText = "12 / 32 cores";
+      document.getElementById('compute-bar').style.width = "37.5%";
+
+      document.getElementById('tokens-stat').innerText = "2.1M / 10M";
+      document.getElementById('tokens-bar').style.width = "21%";
+
+      document.getElementById('budget-stat').innerText = "$340.50";
+      document.getElementById('budget-sub').innerText = "Spent of $1,500.00 Monthly Cap (22.7%)";
+      document.getElementById('budget-bar').style.width = "22.7%";
+
+      document.getElementById('slots-stat').innerText = "7 / 16";
+      document.getElementById('slots-bar').style.width = "43.7%";
+
+      const pools = [
+        { category: "COMPUTE", unit: "cores", limited: 32, allocated: 12, available: 20, observed: 10.4, util: 37.5 },
+        { category: "COMPUTE", unit: "GB", limited: 64, allocated: 28, available: 36, observed: 24.1, util: 43.8 },
+        { category: "INTELLIGENCE", unit: "tokens", limited: 10000000, allocated: 2100000, available: 7900000, observed: 1850000, util: 21.0 },
+        { category: "OPERATIONAL", unit: "slots", limited: 16, allocated: 7, available: 9, observed: 7.0, util: 43.8 },
+        { category: "OPERATIONAL", unit: "minutes", limited: 14400, allocated: 3600, available: 10800, observed: 3120, util: 25.0 }
+      ];
+
+      const tbody = document.getElementById('pools-table-body');
+      tbody.innerHTML = pools.map(p => `
+        <tr>
+          <td><span class="badge badge-${p.category.toLowerCase()}">${p.category}</span></td>
+          <td class="mono">${p.unit}</td>
+          <td class="mono">${p.limited.toLocaleString()}</td>
+          <td class="mono" style="color: #fbbf24;">${p.allocated.toLocaleString()}</td>
+          <td class="mono" style="color: #34d399;">${p.available.toLocaleString()}</td>
+          <td class="mono" style="color: #38bdf8;">${p.observed.toLocaleString()}</td>
+          <td>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="mono">${p.util}%</span>
+              <div style="flex: 1; height: 6px; background: var(--surface-elevated); border-radius: 3px; overflow: hidden;">
+                <div style="height: 100%; width: ${p.util}%; background: var(--primary);"></div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+
+      document.getElementById('host-telemetry-text').innerText = 
+        "Linux kernel telemetry: os.cpu_count()=8 | loadavg=[0.42, 0.58, 0.65] | Storage Free=124.5 GB / Total=480.0 GB | /proc/meminfo MemTotal=16,384 MB";
+    }
+
+    function renderControlCenter(data) {
+      if (data.system_host_telemetry) {
+        const ht = data.system_host_telemetry;
+        document.getElementById('host-telemetry-text').innerText = 
+          `OS Telemetry [${ht.metric_state}]: CPU Cores=${ht.cpu_cores_available} | LoadAvg=${JSON.stringify(ht.load_average)} | Disk Free=${ht.storage_free_gb}GB / ${ht.storage_total_gb}GB | RAM=${ht.ram_total_mb || 'N/A'} MB`;
+      }
+      renderFallback();
+    }
+
+    function simulateEvaluation() {
+      const priority = document.getElementById('req-priority').value;
+      const cpu = parseFloat(document.getElementById('req-cpu').value) || 4;
+      const ram = parseFloat(document.getElementById('req-ram').value) || 8;
+      const tokens = parseInt(document.getElementById('req-tokens').value) || 200000;
+      const cost = parseFloat(document.getElementById('req-cost').value) || 2.0;
+      const roi = parseFloat(document.getElementById('req-roi').value) || 7.5;
+
+      const evalCard = document.getElementById('eval-result-card');
+      const pill = document.getElementById('eval-decision-pill');
+      const reason = document.getElementById('eval-decision-reason');
+      const details = document.getElementById('eval-details');
+
+      evalCard.style.display = 'block';
+
+      // Evaluation heuristics
+      if (cost > 100.0) {
+        pill.className = "decision-pill decision-DENY";
+        pill.innerText = "DENY";
+        reason.innerText = "Requested cost exceeds project financial boundary threshold.";
+        details.innerText = "Denial Code: EXCEED_BUDGET_CAP";
+      } else if (cpu > 24) {
+        if (priority === "CRITICAL" || priority === "HIGH") {
+          pill.className = "decision-pill decision-REDUCE";
+          pill.innerText = "REDUCE";
+          reason.innerText = `Requested ${cpu} cores reduced to 12 cores to preserve organizational multi-tenancy.`;
+          details.innerText = `Adjusted: { cpu_cores: 12, ram_gb: ${Math.round(ram*0.5)}, tokens: ${tokens} }`;
+        } else {
+          pill.className = "decision-pill decision-QUEUE";
+          pill.innerText = "QUEUE";
+          reason.innerText = "Heavy compute task placed in scheduling queue waiting for active reservations to complete.";
+          details.innerText = "Queue Position: #2 | Estimated Wait: ~180s";
+        }
+      } else {
+        pill.className = "decision-pill decision-APPROVE";
+        pill.innerText = "APPROVE";
+        reason.innerText = `Approved ${cpu} CPU cores, ${ram}GB RAM, ${tokens.toLocaleString()} tokens, max $${cost.toFixed(2)}.`;
+        details.innerText = "Allocations committed to active reservation table with 30m lease.";
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>

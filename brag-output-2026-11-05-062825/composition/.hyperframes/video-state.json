@@ -1,0 +1,508 @@
+{
+  "version": 1,
+  "historyId": "04efdf62-7523-4d5a-b7ca-fc42379ca6b1",
+  "currentRevision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0",
+  "pendingChanges": false,
+  "files": {
+    "AGENTS.md": {
+      "hash": "1a68041fc901ff835682a2a8d6f63c96dbb0b9eef8fb0971e97a79eaf69303d3",
+      "content": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/1a/1a68041fc901ff835682a2a8d6f63c96dbb0b9eef8fb0971e97a79eaf69303d3"
+    },
+    "CLAUDE.md": {
+      "hash": "1a68041fc901ff835682a2a8d6f63c96dbb0b9eef8fb0971e97a79eaf69303d3",
+      "content": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/1a/1a68041fc901ff835682a2a8d6f63c96dbb0b9eef8fb0971e97a79eaf69303d3"
+    },
+    "DESIGN.md": {
+      "hash": "6a667f88b5d7059800b45f2205459c3a051c521f5e446efc4ef69acba5700680",
+      "content": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/6a/6a667f88b5d7059800b45f2205459c3a051c521f5e446efc4ef69acba5700680"
+    },
+    "assets/sfx/interface/click_003.ogg": {
+      "hash": "2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292",
+      "content": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/2f/2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292"
+    },
+    "hyperframes.json": {
+      "hash": "35a6d4ea79ebe911f0d81705f7aace5d8ff0316b745b0311d56af50c9c237cb7",
+      "content": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/35/35a6d4ea79ebe911f0d81705f7aace5d8ff0316b745b0311d56af50c9c237cb7"
+    },
+    "index.html": {
+      "hash": "e4a7595ce7c7ea8e51fa159c70822ca84d42a8f8fb7d6a1c94e6ec49b5c55ca5",
+      "content": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/e4/e4a7595ce7c7ea8e51fa159c70822ca84d42a8f8fb7d6a1c94e6ec49b5c55ca5"
+    },
+    "meta.json": {
+      "hash": "4dd0434e524aedf6a331044705a8b43f2abea466fe979915f813534a4cd32083",
+      "content": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/4d/4dd0434e524aedf6a331044705a8b43f2abea466fe979915f813534a4cd32083"
+    },
+    "package.json": {
+      "hash": "8645fe866a5252dc4d3e0b8d27470a5cc76bc929791891817e97494c1bac21b5",
+      "content": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/86/8645fe866a5252dc4d3e0b8d27470a5cc76bc929791891817e97494c1bac21b5"
+    },
+    "assets/music/happy-beats-business-moves-vol-12-by-ende-dot-app.mp3": {
+      "hash": "5888d4bd2ba0119b87a94e502ae2cc401c08192945cc5e5c2f8e8a33aa47a0a1",
+      "content": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/58/5888d4bd2ba0119b87a94e502ae2cc401c08192945cc5e5c2f8e8a33aa47a0a1"
+    }
+  },
+  "revisions": {
+    "2015a5d3-7084-492b-a3d1-30a844c0df9d": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793853645898,
+      "endedAt": 1793853645900,
+      "files": {
+        "index.html": {
+          "before": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/42/425e414cb29bd54fd6ad16fffa20fc7fc1ef0269945d34a662bdfcb45736a052",
+          "after": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/bf/bfc80fbaa4b0629a5013095a9280369e0af5a828270808d86f8460c3c0a70161"
+        }
+      }
+    },
+    "41bf5f0e-7604-4245-9cd9-8e97691296d7": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793853696950,
+      "endedAt": 1793853696953,
+      "files": {
+        "index.html": {
+          "before": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/bf/bfc80fbaa4b0629a5013095a9280369e0af5a828270808d86f8460c3c0a70161",
+          "after": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/fa/fa2f28733828f09dd9f49ba741d41f97a12cb00afaf24f9ad909d84ad70355a2"
+        }
+      }
+    },
+    "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793853838611,
+      "endedAt": 1793853838614,
+      "files": {
+        "index.html": {
+          "before": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/fa/fa2f28733828f09dd9f49ba741d41f97a12cb00afaf24f9ad909d84ad70355a2",
+          "after": "/home/devine-general/.cache/hyperframes/history/04efdf62-7523-4d5a-b7ca-fc42379ca6b1/blobs/e4/e4a7595ce7c7ea8e51fa159c70822ca84d42a8f8fb7d6a1c94e6ec49b5c55ca5"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": {
+      "revision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0",
+      "id": "d5046105-b3bc-45f9-a037-4fc591a210a0"
+    },
+    "revisions": {
+      "2015a5d3-7084-492b-a3d1-30a844c0df9d": [
+        {
+          "id": "630e0511-dc20-477c-b298-5047806ab347",
+          "scope": "project",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": true,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 45000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1793853656668,
+          "contentHash": "e04d9cfa2129e4feb3ca0e8455ece41077d644f6ff734cc8a8d50b9ebcc2297c",
+          "revision": "2015a5d3-7084-492b-a3d1-30a844c0df9d",
+          "inputFingerprint": "a3a1dd6b0ed2f87aa8f1f8a89c9610a14831631e1beff6daa72932b9cb7c80d2",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "8772e8d5-82b1-42da-b1f4-51fcd80751f7"
+        }
+      ],
+      "41bf5f0e-7604-4245-9cd9-8e97691296d7": [
+        {
+          "id": "30a73a82-1bf0-4e87-973c-6f70aabaca92",
+          "scope": "project",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": true,
+              "maxIssues": 30,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 45000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1793853708043,
+          "contentHash": "71d446bbcfb8a57dc50cad5ba4a8475a725035c3f73b09e14538fec6501e6897",
+          "revision": "41bf5f0e-7604-4245-9cd9-8e97691296d7",
+          "inputFingerprint": "a3b4580d7dee99122527b69ce8659e8ba645bdb10d49b5c93c95e0dcffad3ec3",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "8772e8d5-82b1-42da-b1f4-51fcd80751f7"
+        }
+      ],
+      "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0": [
+        {
+          "id": "d5046105-b3bc-45f9-a037-4fc591a210a0",
+          "scope": "project",
+          "report": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-062825/composition/.hyperframes/artifacts/checks/d5046105-b3bc-45f9-a037-4fc591a210a0.json",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": true,
+              "maxIssues": 30,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 45000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1793853855055,
+          "contentHash": "71d446bbcfb8a57dc50cad5ba4a8475a725035c3f73b09e14538fec6501e6897",
+          "revision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0",
+          "inputFingerprint": "b716824712da49c1d97d231b0df084335951ffc2c9ea4b808a3e49916ab3634a",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": [
+      {
+        "id": "cd617f56-689a-438e-bb15-e010578965f2",
+        "scope": "project",
+        "report": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-062825/composition/.hyperframes/artifacts/checks/cd617f56-689a-438e-bb15-e010578965f2.json",
+        "metadata": {
+          "ok": false,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "atTransitions": true,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 45000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1793853352482,
+        "contentHash": "a4484109c3d14b9ea84f8ecc19b3becfca18f78615534aefbf5684756f4abb14",
+        "revision": null,
+        "inputFingerprint": "e30262b658c6f813881bbac1e1d7cd7296aeb97ee4bde57addfe0a229f58497d",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": {
+      "revision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0",
+      "id": "d0be19b6-f89c-462c-abe7-2a18ca650cb6-6"
+    },
+    "revisions": {
+      "41bf5f0e-7604-4245-9cd9-8e97691296d7": [
+        {
+          "scope": "full",
+          "id": "b993bb87-ca44-46b5-bda8-b3b783a69337-0",
+          "time": 2,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "review": {
+              "role": "beat",
+              "label": "t=2"
+            },
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853749519,
+          "contentHash": "6c8a78e1f09f4a4267a167797407ad1bb72c030c5daef3a5bb9afe7160e8dd42",
+          "revision": "41bf5f0e-7604-4245-9cd9-8e97691296d7",
+          "inputFingerprint": "a3b4580d7dee99122527b69ce8659e8ba645bdb10d49b5c93c95e0dcffad3ec3",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "8772e8d5-82b1-42da-b1f4-51fcd80751f7"
+        },
+        {
+          "scope": "full",
+          "id": "b993bb87-ca44-46b5-bda8-b3b783a69337-1",
+          "time": 6,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "review": {
+              "role": "beat",
+              "label": "t=6"
+            },
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853749519,
+          "contentHash": "dcca9f2f5eb95e2c278dd425087f744ae15c185a75444a8ea164837e847bf8f3",
+          "revision": "41bf5f0e-7604-4245-9cd9-8e97691296d7",
+          "inputFingerprint": "a3b4580d7dee99122527b69ce8659e8ba645bdb10d49b5c93c95e0dcffad3ec3",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "8772e8d5-82b1-42da-b1f4-51fcd80751f7"
+        },
+        {
+          "scope": "full",
+          "id": "b993bb87-ca44-46b5-bda8-b3b783a69337-2",
+          "time": 10,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "review": {
+              "role": "beat",
+              "label": "t=10"
+            },
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853749519,
+          "contentHash": "eab730b0d457426e1c56db69c55ac9f3fdcc6cffe218c898b298d26e423b278c",
+          "revision": "41bf5f0e-7604-4245-9cd9-8e97691296d7",
+          "inputFingerprint": "a3b4580d7dee99122527b69ce8659e8ba645bdb10d49b5c93c95e0dcffad3ec3",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "8772e8d5-82b1-42da-b1f4-51fcd80751f7"
+        },
+        {
+          "scope": "full",
+          "id": "b993bb87-ca44-46b5-bda8-b3b783a69337-3",
+          "time": 14,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "review": {
+              "role": "beat",
+              "label": "t=14"
+            },
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853749519,
+          "contentHash": "2e44a8b7e34466a127eef90db77c977791ea1299e7ae715334cb940c0bda2cac",
+          "revision": "41bf5f0e-7604-4245-9cd9-8e97691296d7",
+          "inputFingerprint": "a3b4580d7dee99122527b69ce8659e8ba645bdb10d49b5c93c95e0dcffad3ec3",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "8772e8d5-82b1-42da-b1f4-51fcd80751f7"
+        },
+        {
+          "scope": "full",
+          "id": "b993bb87-ca44-46b5-bda8-b3b783a69337-4",
+          "time": 18,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "review": {
+              "role": "beat",
+              "label": "t=18"
+            },
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853749519,
+          "contentHash": "0fe9a81ff08016fddfd5568b39c4f25908612c070cdc47aaf886c99696e26de7",
+          "revision": "41bf5f0e-7604-4245-9cd9-8e97691296d7",
+          "inputFingerprint": "a3b4580d7dee99122527b69ce8659e8ba645bdb10d49b5c93c95e0dcffad3ec3",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "8772e8d5-82b1-42da-b1f4-51fcd80751f7"
+        }
+      ],
+      "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0": [
+        {
+          "scope": "full",
+          "id": "d0be19b6-f89c-462c-abe7-2a18ca650cb6-0",
+          "image": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-062825/composition/.hyperframes/artifacts/snapshots/92f29c10-8a64-46b3-8f5a-7da59d28e8ee/frame-00-at-0s.png",
+          "time": 0,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853871951,
+          "contentHash": "b4cd7a9b1ae7c9ba0fa3d9420c00aaf03169719e00b69e242c4f57c3acdea403",
+          "revision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0",
+          "inputFingerprint": "b716824712da49c1d97d231b0df084335951ffc2c9ea4b808a3e49916ab3634a",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "d0be19b6-f89c-462c-abe7-2a18ca650cb6-1",
+          "image": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-062825/composition/.hyperframes/artifacts/snapshots/92f29c10-8a64-46b3-8f5a-7da59d28e8ee/frame-01-at-2s.png",
+          "time": 2,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853871951,
+          "contentHash": "285ab273c446777ced78921690135cf37367239a9f96e8efe28b61f9ce09ae21",
+          "revision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0",
+          "inputFingerprint": "b716824712da49c1d97d231b0df084335951ffc2c9ea4b808a3e49916ab3634a",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "d0be19b6-f89c-462c-abe7-2a18ca650cb6-2",
+          "image": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-062825/composition/.hyperframes/artifacts/snapshots/92f29c10-8a64-46b3-8f5a-7da59d28e8ee/frame-02-at-6s.png",
+          "time": 6,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853871951,
+          "contentHash": "dcca9f2f5eb95e2c278dd425087f744ae15c185a75444a8ea164837e847bf8f3",
+          "revision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0",
+          "inputFingerprint": "b716824712da49c1d97d231b0df084335951ffc2c9ea4b808a3e49916ab3634a",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "d0be19b6-f89c-462c-abe7-2a18ca650cb6-3",
+          "image": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-062825/composition/.hyperframes/artifacts/snapshots/92f29c10-8a64-46b3-8f5a-7da59d28e8ee/frame-03-at-10s.png",
+          "time": 10,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853871951,
+          "contentHash": "eab730b0d457426e1c56db69c55ac9f3fdcc6cffe218c898b298d26e423b278c",
+          "revision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0",
+          "inputFingerprint": "b716824712da49c1d97d231b0df084335951ffc2c9ea4b808a3e49916ab3634a",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "d0be19b6-f89c-462c-abe7-2a18ca650cb6-4",
+          "image": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-062825/composition/.hyperframes/artifacts/snapshots/92f29c10-8a64-46b3-8f5a-7da59d28e8ee/frame-04-at-14s.png",
+          "time": 14,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853871951,
+          "contentHash": "24bbb8d2c17ec3e489ae374d03ca668d5f3085e65a8c47357762f64d3dc59ca4",
+          "revision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0",
+          "inputFingerprint": "b716824712da49c1d97d231b0df084335951ffc2c9ea4b808a3e49916ab3634a",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "d0be19b6-f89c-462c-abe7-2a18ca650cb6-5",
+          "image": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-062825/composition/.hyperframes/artifacts/snapshots/92f29c10-8a64-46b3-8f5a-7da59d28e8ee/frame-05-at-18s.png",
+          "time": 18,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853871951,
+          "contentHash": "f6a0db9dde21b7edf2effb7018828ee7c14a17dd673d7be458ef45f749af9372",
+          "revision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0",
+          "inputFingerprint": "b716824712da49c1d97d231b0df084335951ffc2c9ea4b808a3e49916ab3634a",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "d0be19b6-f89c-462c-abe7-2a18ca650cb6-6",
+          "image": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-062825/composition/.hyperframes/artifacts/snapshots/92f29c10-8a64-46b3-8f5a-7da59d28e8ee/frame-06-at-19.4s.png",
+          "time": 19.4,
+          "metadata": {
+            "width": 1920,
+            "height": 1080,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793853871951,
+          "contentHash": "f6a0db9dde21b7edf2effb7018828ee7c14a17dd673d7be458ef45f749af9372",
+          "revision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0",
+          "inputFingerprint": "b716824712da49c1d97d231b0df084335951ffc2c9ea4b808a3e49916ab3634a",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": []
+  },
+  "renders": {
+    "latest": {
+      "id": "8772e8d5-82b1-42da-b1f4-51fcd80751f7",
+      "completedAt": 1793870378972,
+      "output": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-062825/brag.mp4",
+      "status": "completed",
+      "revision": "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0"
+    },
+    "retainedRevisions": [
+      "0ecf88c6-b34a-4adf-87d7-e6ea54fcadc0"
+    ]
+  },
+  "pendingArtifactCleanup": []
+}
