@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# NEIMAN OS — Operator CLI & TUI Cockpit Launcher (neiman-cli)
+# Canonical Command Line Interface for NEIMAN OS
+# ==============================================================================
+set -euo pipefail
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+    DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+ROOT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+
+# Ensure user toolchains (~/.local/bin for uv, ~/.cargo/bin, mise shims) are on PATH
+for p in "${HOME}/.local/bin" "${HOME}/.cargo/bin" "${HOME}/.local/share/mise/shims"; do
+    if [ -d "${p}" ] && [[ ":$PATH:" != *":${p}:"* ]]; then
+        export PATH="${p}:${PATH}"
+    fi
+done
+
+# Auto-sync repository updates from remote if git is available
+if [ -d "${ROOT_DIR}/.git" ] && command -v git >/dev/null 2>&1; then
+    git -C "${ROOT_DIR}" pull origin main --quiet 2>/dev/null || true
+fi
+
+# Bounce backend daemon if running setup to guarantee fresh code
+if [ "${1:-}" = "setup" ]; then
+    pkill -f "uvicorn nexora.main:app" 2>/dev/null || true
+    sleep 0.3
+fi
+
+# Fast-path for desktop launch
+if [ "${1:-}" = "desktop" ]; then
+    shift
+    exec "${ROOT_DIR}/neiman-desktop" "$@"
+fi
+
+# Fast-path for system update
+if [ "${1:-}" = "update" ]; then
+    shift
+    exec "${ROOT_DIR}/scripts/update.sh" "$@"
+fi
+
+# Fast-path for system setup reset
+if [ "${1:-}" = "setup-reset" ]; then
+    shift
+    exec "${ROOT_DIR}/scripts/setup.sh" "$@"
+fi
+
+# Fast-path for TUI launch (default with no arguments or 'tui')
+if [ $# -eq 0 ] || [ "${1:-}" = "tui" ]; then
+    [ $# -gt 0 ] && shift
+    exec "${ROOT_DIR}/run-tui.sh" "$@"
+fi
+
+cd "${ROOT_DIR}/apps/api"
+
+# Automatic execution: direct .venv Python, uv run, or automatic setup
+if [ -x "${ROOT_DIR}/apps/api/.venv/bin/python" ]; then
+    exec "${ROOT_DIR}/apps/api/.venv/bin/python" -m nexora.neiman_cli "$@"
+elif command -v uv >/dev/null 2>&1; then
+    exec uv run python -m nexora.neiman_cli "$@"
+else
+    echo "[*] Auto-provisioning NEIMAN environment..."
+    "${ROOT_DIR}/scripts/install.sh" --skip-build
+    exec "${ROOT_DIR}/apps/api/.venv/bin/python" -m nexora.neiman_cli "$@"
+fi

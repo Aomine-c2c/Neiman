@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# NEIMAN OS — Legacy Updater Forwarder
+# Canonical update command is: neiman-cli update
+# ==============================================================================
+set -euo pipefail
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+    DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+ROOT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+
+exec "${ROOT_DIR}/neiman-cli" update "$@"

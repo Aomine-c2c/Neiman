@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEIMAN — Intelligence Exchange Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --surface: #0e131f;
+      --surface-elevated: #161e31;
+      --border: #212c47;
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.25);
+      --accent: #38bdf8;
+      --gemini: #4285f4;
+      --claude: #d97706;
+      --openai: #10b981;
+      --local: #a855f7;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(14, 19, 31, 0.85);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
+    .kpi-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .kpi-val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text);
+    }
+
+    /* Card styling */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Provider Catalog */
+    .providers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .provider-box {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .provider-box:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+    }
+
+    .provider-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .provider-badge {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-openai { background: rgba(16, 185, 129, 0.15); color: var(--openai); border: 1px solid var(--openai); }
+    .badge-anthropic { background: rgba(217, 119, 6, 0.15); color: var(--claude); border: 1px solid var(--claude); }
+    .badge-google_gemini { background: rgba(66, 133, 244, 0.15); color: var(--gemini); border: 1px solid var(--gemini); }
+    .badge-local { background: rgba(168, 85, 247, 0.15); color: var(--local); border: 1px solid var(--local); }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: #cbd5e1;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    th {
+      text-align: left;
+      padding: 12px 16px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: #cbd5e1;
+    }
+
+    tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    input {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #4f46e5; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <span>NEIMAN</span>
+      <span class="brand-badge">Intelligence Exchange</span>
+    </div>
+    <div>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">Decoupled Model Router • Multi-Provider Mesh</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Controls -->
+    <div class="card" style="padding: 16px 24px;">
+      <div class="input-row" style="margin-bottom: 0;">
+        <input type="text" id="companyId" placeholder="Company ID (UUID)..." style="min-width: 320px;" />
+        <input type="password" id="authToken" placeholder="Bearer Token (JWT)..." style="min-width: 280px;" />
+        <button class="btn" onclick="fetchDashboard()">Load Intelligence Analytics</button>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span class="kpi-label">Total Model Invocations</span>
+        <span class="kpi-val" id="kpiRequests">0</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Total Spend (USD)</span>
+        <span class="kpi-val" id="kpiSpend" style="color: var(--accent);">$0.00</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Tokens Consumed</span>
+        <span class="kpi-val" id="kpiTokens">0</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Avg Router Latency</span>
+        <span class="kpi-val" id="kpiLatency">0 ms</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Provider Health Rate</span>
+        <span class="kpi-val" id="kpiHealth" style="color: var(--openai);">100%</span>
+      </div>
+    </div>
+
+    <!-- Registered AI Providers -->
+    <div class="card">
+      <div class="card-title">
+        <span>Active Model Providers</span>
+        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">Decoupled Vendor Abstraction</span>
+      </div>
+      <div class="providers-grid" id="providersGrid">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+
+    <!-- Available Model Catalog & Metadata -->
+    <div class="card">
+      <div class="card-title">Model Capability & Pricing Catalog</div>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Model Identifier</th>
+              <th>Provider</th>
+              <th>Capabilities</th>
+              <th>Context Window</th>
+              <th>Cost (In / Out per 1M)</th>
+              <th>Latency</th>
+              <th>Privacy Classification</th>
+            </tr>
+          </thead>
+          <tbody id="modelsTableBody">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Real-time Routing Decisions & Telemetry -->
+    <div class="card">
+      <div class="card-title">Recent Autonomous Routing Decisions & Fallbacks</div>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Requested Capability</th>
+              <th>Routed Model</th>
+              <th>Provider</th>
+              <th>Fallback Used?</th>
+              <th>Cost</th>
+              <th>Latency</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="logsTableBody">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function fetchDashboard() {
+      const companyId = document.getElementById('companyId').value.trim();
+      const token = document.getElementById('authToken').value.trim();
+
+      if (!companyId) {
+        alert('Please specify a Company ID');
+        return;
+      }
+
+      const headers = {};
+      if (token) headers['Authorization'] = 'Bearer ' + token;
+
+      try {
+        const resp = await fetch(`/api/v1/companies/${companyId}/intelligence/dashboard`, { headers });
+        if (!resp.ok) {
+          alert('Error: ' + resp.status + ' ' + (await resp.text()));
+          return;
+        }
+
+        const data = await resp.json();
+        renderDashboard(data);
+      } catch (err) {
+        alert('Error: ' + err.message);
+      }
+    }
+
+    function renderDashboard(data) {
+      // KPIs
+      document.getElementById('kpiRequests').innerText = data.total_requests.toLocaleString();
+      document.getElementById('kpiSpend').innerText = '$' + data.total_spend_usd.toFixed(4);
+      document.getElementById('kpiTokens').innerText = data.total_tokens_consumed.toLocaleString();
+      document.getElementById('kpiLatency').innerText = Math.round(data.avg_latency_ms) + ' ms';
+      document.getElementById('kpiHealth').innerText = Math.round(data.overall_success_rate * 100) + '%';
+
+      // Providers Grid
+      const pGrid = document.getElementById('providersGrid');
+      pGrid.innerHTML = '';
+      (data.available_providers || []).forEach(p => {
+        const box = document.createElement('div');
+        box.className = 'provider-box';
+        const badgeClass = 'badge-' + (p.name || 'default');
+        box.innerHTML = `
+          <div class="provider-header">
+            <h3 style="font-size: 1.1rem; font-weight: 700;">${p.display_name}</h3>
+            <span class="provider-badge ${badgeClass}">${p.is_healthy ? 'HEALTHY' : 'DEGRADED'}</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">${p.description || 'Frontier model provider'}</p>
+          <div style="font-size: 0.8rem; color: #cbd5e1; display: flex; justify-content: space-between;">
+            <span>Type: ${p.is_local ? 'Self-Hosted (Local)' : 'Cloud API'}</span>
+            <span>Failures: ${p.consecutive_failures}</span>
+          </div>
+        `;
+        pGrid.appendChild(box);
+      });
+
+      // Models Table
+      const mBody = document.getElementById('modelsTableBody');
+      mBody.innerHTML = '';
+      (data.available_models || []).forEach(m => {
+        const row = document.createElement('tr');
+        const capsHtml = (m.capabilities || []).map(c => `<span class="tag">${c}</span>`).join(' ');
+        row.innerHTML = `
+          <td class="mono" style="font-weight: 600; color: #fff;">${m.model_identifier}</td>
+          <td>${m.display_name}</td>
+          <td><div class="tag-container">${capsHtml}</div></td>
+          <td class="mono">${(m.context_capacity).toLocaleString()} tokens</td>
+          <td class="mono">$${m.input_cost_per_million.toFixed(2)} / $${m.output_cost_per_million.toFixed(2)}</td>
+          <td class="mono">${m.avg_latency_ms} ms</td>
+          <td><span class="tag" style="border-color: var(--accent);">${m.privacy_classification}</span></td>
+        `;
+        mBody.appendChild(row);
+      });
+
+      // Logs Table
+      const lBody = document.getElementById('logsTableBody');
+      lBody.innerHTML = '';
+      if (!data.recent_routing_decisions || data.recent_routing_decisions.length === 0) {
+        lBody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--text-muted);">No routing telemetry recorded yet. Invocations will stream here.</td></tr>';
+      } else {
+        data.recent_routing_decisions.forEach(l => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="mono">${new Date(l.created_at).toLocaleTimeString()}</td>
+            <td><span class="tag">${l.requested_capability || 'general'}</span></td>
+            <td class="mono" style="color: #fff; font-weight: 600;">${l.model}</td>
+            <td>${l.provider}</td>
+            <td>${l.fallback ? '<span style="color: var(--claude); font-weight: 600;">YES (Fallback)</span>' : '<span style="color: var(--openai);">Direct</span>'}</td>
+            <td class="mono">$${(l.cost_usd || 0).toFixed(5)}</td>
+            <td class="mono">${Math.round(l.latency_ms)} ms</td>
+            <td><span style="color: ${l.success ? 'var(--openai)' : 'var(--danger)'}; font-weight: 700;">${l.success ? 'SUCCESS' : 'FAILED'}</span></td>
+          `;
+          lBody.appendChild(row);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

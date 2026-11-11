@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEIMAN — Autonomous Agent Profile Inspector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --surface: #101626;
+      --surface-elevated: #161e33;
+      --border: #232d48;
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.25);
+      --accent: #06b6d4;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(16, 22, 38, 0.8);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 32px;
+    }
+
+    /* Left Sidebar: Selectors & Quick stats */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .card-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+    input, select {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px var(--primary-glow);
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: #4f46e5;
+      transform: translateY(-1px);
+    }
+
+    /* Main Profile Layout */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .profile-hero {
+      background: linear-gradient(180deg, var(--surface-elevated), var(--surface));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 250px; height: 100%;
+      background: radial-gradient(circle at top right, var(--primary-glow), transparent 70%);
+      pointer-events: none;
+    }
+
+    .avatar-box {
+      width: 88px;
+      height: 88px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px var(--primary-glow);
+    }
+
+    .hero-info {
+      flex: 1;
+    }
+
+    .hero-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .hero-name {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .status-tag {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .status-AVAILABLE { background: rgba(16, 185, 129, 0.15); color: var(--success); border: 1px solid var(--success); }
+    .status-WORKING { background: rgba(6, 182, 212, 0.15); color: var(--accent); border: 1px solid var(--accent); }
+    .status-BLOCKED { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: 1px solid var(--danger); }
+    .status-PAUSED { background: rgba(245, 158, 11, 0.15); color: var(--warning); border: 1px solid var(--warning); }
+    .status-CREATED, .status-CONFIGURED { background: rgba(99, 102, 241, 0.15); color: var(--primary); border: 1px solid var(--primary); }
+    .status-RETIRED { background: rgba(148, 163, 184, 0.15); color: var(--text-muted); border: 1px solid var(--text-muted); }
+
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .hero-sub span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-description {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    /* Grid layout for inspection panels */
+    .inspect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.85rem;
+    }
+    .metric-row:last-child { border-bottom: none; }
+    .metric-label { color: var(--text-muted); }
+    .metric-val { font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+
+    /* Timeline / Audits */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .timeline-item {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    .timeline-badge {
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <span>NEIMAN</span>
+      <span class="brand-badge">Agent Inspector</span>
+    </div>
+    <div>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">OS Core v0.1.0 • Employee Operating System</span>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Left Panel: Context selection -->
+    <div class="sidebar">
+      <div class="card">
+        <div class="card-title">Profile Navigator</div>
+        <div class="input-group">
+          <label for="companyId">Company ID</label>
+          <input type="text" id="companyId" placeholder="UUID of Company..." />
+        </div>
+        <div class="input-group">
+          <label for="agentId">Agent ID</label>
+          <input type="text" id="agentId" placeholder="UUID of Agent..." />
+        </div>
+        <div class="input-group">
+          <label for="authToken">Bearer Token (JWT)</label>
+          <input type="password" id="authToken" placeholder="Paste access token..." />
+        </div>
+        <button class="btn" id="loadBtn" onclick="loadAgentProfile()">
+          Inspect Profile
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Employee Actions</div>
+        <div class="input-group">
+          <label for="statusSelect">Transition Lifecycle</label>
+          <select id="statusSelect">
+            <option value="AVAILABLE">AVAILABLE (Ready for tasks)</option>
+            <option value="WORKING">WORKING (Active)</option>
+            <option value="BLOCKED">BLOCKED (Blocked/Escalated)</option>
+            <option value="PAUSED">PAUSED (Paused by manager)</option>
+            <option value="RETIRED">RETIRED (Archived)</option>
+          </select>
+        </div>
+        <button class="btn" style="background: var(--surface-elevated); border: 1px solid var(--border);" onclick="transitionStatus()">
+          Update State
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Panel: Full Employee Profile -->
+    <div class="main-content">
+      <div class="profile-hero">
+        <div class="avatar-box" id="avatarLetter">A</div>
+        <div class="hero-info">
+          <div class="hero-header">
+            <h1 class="hero-name" id="agentName">Select Agent</h1>
+            <span class="status-tag status-AVAILABLE" id="agentStatus">AVAILABLE</span>
+            <span class="status-tag" style="background: rgba(99,102,241,0.15); color: var(--primary);" id="agentAutonomy">SUPERVISED</span>
+          </div>
+          <div class="hero-sub">
+            <span id="roleDept">Role: Research Lead • Dept: Engineering</span>
+            <span id="reportingLine">Reports to: Autonomous CTO</span>
+          </div>
+          <p class="hero-description" id="agentInstructions">
+            Load an agent profile using the sidebar to inspect operational directives, assigned tools, intelligence provider routing, memory bank, and execution audit history.
+          </p>
+        </div>
+      </div>
+
+      <div class="inspect-grid">
+        <!-- Responsibilities & Goals -->
+        <div class="card">
+          <div class="card-title">Organizational Responsibilities & Goals</div>
+          <div style="margin-bottom: 16px;">
+            <label>Explicit Responsibilities</label>
+            <ul id="responsibilitiesList" style="list-style-type: disc; margin-left: 20px; font-size: 0.85rem; color: #cbd5e1; margin-top: 6px;">
+              <li>Execute assigned tasks with verified outcome</li>
+            </ul>
+          </div>
+          <div>
+            <label>Current OKRs & Goals</label>
+            <ul id="goalsList" style="list-style-type: disc; margin-left: 20px; font-size: 0.85rem; color: #cbd5e1; margin-top: 6px;">
+              <li>High-accuracy research synthesis</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Intelligence Provider & Tool Registry -->
+        <div class="card">
+          <div class="card-title">Intelligence Provider & Tools</div>
+          <div class="metric-row">
+            <span class="metric-label">Provider</span>
+            <span class="metric-val" id="modelProvider">openai</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Model Identifier</span>
+            <span class="metric-val" id="modelName">gpt-4o</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Temperature</span>
+            <span class="metric-val" id="modelTemp">0.7</span>
+          </div>
+          <div style="margin-top: 16px;">
+            <label style="margin-bottom: 8px; display: block;">Authorized Tools</label>
+            <div class="tag-container" id="toolsContainer">
+              <span class="tag">web_search</span>
+              <span class="tag">data_analysis</span>
+              <span class="tag">memory_store</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resource Quotas & Usage -->
+        <div class="card">
+          <div class="card-title">Resource Usage & Quotas</div>
+          <div class="metric-row">
+            <span class="metric-label">Daily Budget Quota</span>
+            <span class="metric-val" id="quotaBudget">$10.00</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Total Spend (USD)</span>
+            <span class="metric-val" id="usageCost">$0.00</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Tokens Consumed</span>
+            <span class="metric-val" id="usageTokens">0</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Tool Invocations</span>
+            <span class="metric-val" id="usageTools">0</span>
+          </div>
+        </div>
+
+        <!-- Performance History -->
+        <div class="card">
+          <div class="card-title">Performance Metrics</div>
+          <div class="metric-row">
+            <span class="metric-label">Success Rate</span>
+            <span class="metric-val" id="perfSuccess">100%</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Tasks Completed</span>
+            <span class="metric-val" id="perfCompleted">0</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Tasks Failed</span>
+            <span class="metric-val" id="perfFailed">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Memories & Audit Logs -->
+      <div class="card">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab('audits')">Traceable Audit Trail</button>
+          <button class="tab-btn" onclick="switchTab('memories')">Long-term Memory Bank</button>
+          <button class="tab-btn" onclick="switchTab('comms')">Agent-to-Agent Communications</button>
+        </div>
+
+        <div id="auditsTab" class="timeline">
+          <div class="timeline-item">
+            <div>
+              <span class="timeline-badge">EXECUTION_STEP</span>
+              <span style="margin-left: 8px;">10-step autonomous execution engine logs</span>
+            </div>
+            <span style="color: var(--text-muted); font-size: 0.8rem;">Ready</span>
+          </div>
+        </div>
+
+        <div id="memoriesTab" class="timeline" style="display: none;">
+          <div class="timeline-item">
+            <div>
+              <span class="timeline-badge" style="color: var(--primary);">EPISODIC</span>
+              <span style="margin-left: 8px;">Task outcomes and reflections</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="commsTab" class="timeline" style="display: none;">
+          <div class="timeline-item">
+            <div>
+              <span class="timeline-badge" style="color: var(--warning);">DELEGATION</span>
+              <span style="margin-left: 8px;">Incoming and outgoing structured messages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      document.getElementById('auditsTab').style.display = tab === 'audits' ? 'flex' : 'none';
+      document.getElementById('memoriesTab').style.display = tab === 'memories' ? 'flex' : 'none';
+      document.getElementById('commsTab').style.display = tab === 'comms' ? 'flex' : 'none';
+    }
+
+    async function loadAgentProfile() {
+      const companyId = document.getElementById('companyId').value.trim();
+      const agentId = document.getElementById('agentId').value.trim();
+      const token = document.getElementById('authToken').value.trim();
+
+      if (!companyId || !agentId) {
+        alert('Please enter both Company ID and Agent ID');
+        return;
+      }
+
+      const headers = {};
+      if (token) headers['Authorization'] = 'Bearer ' + token;
+
+      try {
+        const resp = await fetch(`/api/v1/companies/${companyId}/agents/${agentId}/profile`, { headers });
+        if (!resp.ok) {
+          alert('Failed to load profile: ' + resp.status + ' ' + (await resp.text()));
+          return;
+        }
+
+        const data = await resp.json();
+        renderProfile(data);
+      } catch (err) {
+        alert('Error: ' + err.message);
+      }
+    }
+
+    function renderProfile(data) {
+      document.getElementById('agentName').innerText = data.name;
+      document.getElementById('avatarLetter').innerText = data.name.charAt(0).toUpperCase();
+
+      const statusTag = document.getElementById('agentStatus');
+      statusTag.innerText = data.status;
+      statusTag.className = 'status-tag status-' + data.status;
+
+      document.getElementById('agentAutonomy').innerText = data.autonomy;
+
+      document.getElementById('roleDept').innerText = `Role: ${data.role_title || 'Unassigned'} • Dept: ${data.department_name || 'General'}`;
+      document.getElementById('reportingLine').innerText = `Reports to: ${data.manager_name || 'Autonomous Executive'}`;
+
+      document.getElementById('agentInstructions').innerText = data.system_instructions || 'No system instructions specified.';
+
+      // Intelligence & Tools
+      const intel = data.intelligence_config || {};
+      document.getElementById('modelProvider').innerText = intel.provider || 'openai';
+      document.getElementById('modelName').innerText = intel.model || 'gpt-4o';
+      document.getElementById('modelTemp').innerText = intel.temperature !== undefined ? intel.temperature : 0.7;
+
+      const toolsBox = document.getElementById('toolsContainer');
+      toolsBox.innerHTML = '';
+      (data.tools || []).forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.innerText = typeof t === 'object' ? t.name : t;
+        toolsBox.appendChild(span);
+      });
+
+      // Usage
+      const usage = data.resource_usage || {};
+      const limits = data.resource_limits || {};
+      document.getElementById('quotaBudget').innerText = '$' + (limits.max_daily_budget_usd || 10.0).toFixed(2);
+      document.getElementById('usageCost').innerText = '$' + (usage.total_cost_usd || 0.0).toFixed(4);
+      document.getElementById('usageTokens').innerText = (usage.total_tokens || 0).toLocaleString();
+      document.getElementById('usageTools').innerText = usage.total_tool_calls || 0;
+
+      // Perf
+      const perf = data.performance_metadata || {};
+      document.getElementById('perfSuccess').innerText = Math.round((perf.success_rate || 1.0) * 100) + '%';
+      document.getElementById('perfCompleted').innerText = perf.tasks_completed || 0;
+      document.getElementById('perfFailed').innerText = perf.tasks_failed || 0;
+
+      // Lists
+      renderList('responsibilitiesList', data.responsibilities);
+      renderList('goalsList', data.goals);
+
+      // Audits
+      const auditsBox = document.getElementById('auditsTab');
+      auditsBox.innerHTML = '';
+      (data.recent_audits || []).forEach(a => {
+        const item = document.createElement('div');
+        item.className = 'timeline-item';
+        item.innerHTML = `
+          <div>
+            <span class="timeline-badge">${a.step || a.action}</span>
+            <span style="margin-left: 8px;">${a.status}</span>
+          </div>
+          <span style="color: var(--text-muted); font-size: 0.8rem;">${new Date(a.created_at).toLocaleTimeString()}</span>
+        `;
+        auditsBox.appendChild(item);
+      });
+
+      // Memories
+      const memBox = document.getElementById('memoriesTab');
+      memBox.innerHTML = '';
+      (data.memories || []).forEach(m => {
+        const item = document.createElement('div');
+        item.className = 'timeline-item';
+        item.innerHTML = `
+          <div>
+            <span class="timeline-badge" style="color: var(--primary);">${m.type.toUpperCase()}</span>
+            <strong style="margin-left: 8px;">${m.key}</strong>: ${m.content}
+          </div>
+          <span style="color: var(--text-muted); font-size: 0.8rem;">Imp: ${m.importance}</span>
+        `;
+        memBox.appendChild(item);
+      });
+    }
+
+    function renderList(elementId, items) {
+      const el = document.getElementById(elementId);
+      el.innerHTML = '';
+      if (!items || items.length === 0) {
+        el.innerHTML = '<li>None assigned</li>';
+        return;
+      }
+      items.forEach(it => {
+        const li = document.createElement('li');
+        li.innerText = typeof it === 'string' ? it : JSON.stringify(it);
+        el.appendChild(li);
+      });
+    }
+
+    async function transitionStatus() {
+      const companyId = document.getElementById('companyId').value.trim();
+      const agentId = document.getElementById('agentId').value.trim();
+      const token = document.getElementById('authToken').value.trim();
+      const newStatus = document.getElementById('statusSelect').value;
+
+      if (!companyId || !agentId) {
+        alert('Please specify company ID and agent ID');
+        return;
+      }
+
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = 'Bearer ' + token;
+
+      const resp = await fetch(`/api/v1/companies/${companyId}/agents/${agentId}/transition`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ status: newStatus, reason: 'Manual transition from Agent Profile UI' }),
+      });
+
+      if (resp.ok) {
+        alert('Lifecycle status updated to ' + newStatus);
+        loadAgentProfile();
+      } else {
+        alert('Failed: ' + (await resp.text()));
+      }
+    }
+  </script>
+</body>
+</html>

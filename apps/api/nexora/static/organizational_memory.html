@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEIMAN — Organizational Knowledge & Memory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --surface: #0e131f;
+      --surface-elevated: #161e31;
+      --border: #212c47;
+      --primary: #8b5cf6;
+      --primary-glow: rgba(139, 92, 246, 0.25);
+      --accent: #38bdf8;
+      --company: #6366f1;
+      --policy: #f59e0b;
+      --decision: #10b981;
+      --failure: #ef4444;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(14, 19, 31, 0.85);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      gap: 14px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text);
+      background: var(--surface-elevated);
+    }
+
+    main {
+      flex: 1;
+      padding: 32px 36px;
+      max-width: 1540px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .domain-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .pill:hover, .pill.active {
+      background: var(--surface-elevated);
+      color: var(--text);
+      border-color: var(--primary);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 10px;
+    }
+
+    input, select, textarea, button {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.88rem;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    button.btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    button.btn-primary:hover {
+      box-shadow: 0 0 16px var(--primary-glow);
+    }
+
+    .memory-item {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.2s;
+    }
+
+    .memory-item:hover {
+      border-color: rgba(139, 92, 246, 0.4);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .badge-company { background: rgba(99, 102, 241, 0.15); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .badge-policy { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-decision { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-failure { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-kb { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .prompt-box {
+      background: #05070a;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 0.8rem;
+      color: #38bdf8;
+      white-space: pre-wrap;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span>NEIMAN</span>
+      <span class="brand-badge">Organizational Memory</span>
+    </div>
+    <nav>
+      <a href="/ui/memory" class="nav-link active">Knowledge & Memory</a>
+      <a href="/ui/resources" class="nav-link">Resource Engine</a>
+      <a href="/ui/intelligence" class="nav-link">Intelligence Exchange</a>
+      <a href="/ui/agents" class="nav-link">Agent Profiles</a>
+      <a href="/api/docs" class="nav-link" target="_blank">API Docs</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- DOMAIN FILTER PILLS (10 DOMAINS) -->
+    <div class="domain-pills">
+      <span class="pill active" onclick="filterDomain('ALL')">All Domains (10)</span>
+      <span class="pill" onclick="filterDomain('COMPANY')">1. Company</span>
+      <span class="pill" onclick="filterDomain('DEPARTMENT')">2. Department</span>
+      <span class="pill" onclick="filterDomain('AGENT')">3. Agent</span>
+      <span class="pill" onclick="filterDomain('PROJECT')">4. Project</span>
+      <span class="pill" onclick="filterDomain('CUSTOMER')">5. Customer</span>
+      <span class="pill" onclick="filterDomain('DECISION')">6. Decision</span>
+      <span class="pill" onclick="filterDomain('POLICY')">7. Policy</span>
+      <span class="pill" onclick="filterDomain('EXPERIMENT')">8. Experiment</span>
+      <span class="pill" onclick="filterDomain('FAILURE')">9. Failure</span>
+      <span class="pill" onclick="filterDomain('KNOWLEDGE_BASE')">10. Knowledge Base</span>
+    </div>
+
+    <!-- MAIN TWO COLUMN -->
+    <div class="grid-2">
+      <!-- LEFT: SEARCHABLE KNOWLEDGE BASE -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Searchable Knowledge Base</span>
+          <span class="mono" style="font-size: 0.75rem; color: var(--text-muted);" id="memory-count">5 items</span>
+        </div>
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search across policies, post-mortems, decisions, culture..." style="flex: 1;" onkeyup="handleSearch(event)" />
+          <button class="btn-primary" onclick="executeSearch()">Search</button>
+        </div>
+
+        <div id="memories-container" style="display: flex; flex-direction: column; gap: 14px;">
+          <!-- Items injected dynamically -->
+        </div>
+      </div>
+
+      <!-- RIGHT: CONTEXT ASSEMBLY TESTER & DECISION LOG -->
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <!-- TASK CONTEXT ASSEMBLY PIPELINE -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Context Assembly Engine</span>
+            <span class="badge badge-decision">Privacy Sanitized</span>
+          </div>
+          <div style="font-size: 0.82rem; color: var(--text-muted);">
+            TASK → identify knowledge → retrieve memories → apply permissions → rank relevance → minimal prompt.
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Task Objective</label>
+            <input type="text" id="ctx-objective" value="Audit customer onboarding security compliance and verify token limits" />
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <div style="flex: 1;">
+              <label style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Caller Role</label>
+              <select id="ctx-role" style="width: 100%;">
+                <option value="MEMBER">MEMBER (Internal)</option>
+                <option value="ADMIN">ADMIN (Confidential/Restricted)</option>
+                <option value="VIEWER">VIEWER (Public Only)</option>
+              </select>
+            </div>
+            <div style="flex: 1;">
+              <label style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Max Tokens</label>
+              <input type="number" id="ctx-tokens" value="2000" style="width: 100%;" />
+            </div>
+          </div>
+          <button class="btn-primary" onclick="assembleContext()">Assemble Minimal Context</button>
+
+          <div id="assembled-output" style="display: none; margin-top: 10px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 6px; color: var(--text-muted);">
+              <span>SELECTED: <strong id="out-selected" style="color: #34d399;">2 memories</strong></span>
+              <span>EST. TOKENS: <strong id="out-tokens" class="mono" style="color: #38bdf8;">142</strong></span>
+            </div>
+            <div class="prompt-box mono" id="out-prompt"></div>
+          </div>
+        </div>
+
+        <!-- DECISION RECORD AUDIT -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Decision Deliberation Memory</span>
+            <span class="badge badge-company">ADR & Learning</span>
+          </div>
+          <div class="memory-item" style="border-left: 3px solid var(--decision);">
+            <div style="display: flex; justify-content: space-between;">
+              <strong style="font-size: 0.9rem;">ADR-003: Multi-Provider Intelligence Routing</strong>
+              <span class="mono" style="font-size: 0.75rem; color: #34d399;">DECIDED</span>
+            </div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">
+              <strong>Rationale:</strong> Prevent single-vendor lock-in by using capability-based routing.
+            </div>
+            <div style="font-size: 0.8rem; color: #a78bfa;">
+              <strong>Lessons Learned:</strong> Unified schemas allow zero-downtime provider failover.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const mockMemories = [
+      {
+        id: "1",
+        domain: "COMPANY",
+        scope: "PUBLIC",
+        title: "Company Operating Principles",
+        summary: "Autonomous organization OS principles and core mission.",
+        content: "NEIMAN operates as an autonomous, self-coordinating organizational operating system with strict capability-based security.",
+        confidence: 1.0,
+        source: "Founding Charter",
+        provenance_type: "POLICY_DOCUMENT"
+      },
+      {
+        id: "2",
+        domain: "POLICY",
+        scope: "INTERNAL",
+        title: "Model Provider Data Classification Standard",
+        summary: "Customer PII must be sanitized before inference routing.",
+        content: "Confidential customer personally identifiable data must never be transmitted to non-enterprise AI model endpoints without explicit sanitization.",
+        confidence: 1.0,
+        source: "Security Policy v1.2",
+        provenance_type: "POLICY_DOCUMENT"
+      },
+      {
+        id: "3",
+        domain: "FAILURE",
+        scope: "INTERNAL",
+        title: "Post-Mortem: Unbounded Token Consumption Incident",
+        summary: "Recursive agent loop mitigation and hard ceiling policies.",
+        content: "In Q2, recursive agent reflection loops caused runaway API spend. Resolution: Enforce maximum token ceilings and timeout guardrails on all agent execution lifecycles.",
+        confidence: 0.95,
+        source: "Incident INC-204",
+        provenance_type: "DECISION_OUTCOME"
+      },
+      {
+        id: "4",
+        domain: "DECISION",
+        scope: "INTERNAL",
+        title: "Architecture: Multi-Provider Intelligence Routing",
+        summary: "Vendor decoupling via capability-based routing.",
+        content: "Decided to abstract all AI models behind an organizational Intelligence Exchange rather than hardcoding vendor SDKs into agents.",
+        confidence: 1.0,
+        source: "Architecture Decision Record ADR-003",
+        provenance_type: "SYSTEM_SYNTHESIS"
+      },
+      {
+        id: "5",
+        domain: "KNOWLEDGE_BASE",
+        scope: "PUBLIC",
+        title: "Engineering Workflow Standards",
+        summary: "Standard engineering domain architectural pattern.",
+        content: "All domain modules must feature repository, service, and schema layers with async SQLAlchemy 2.0 and Pydantic V2 verification.",
+        confidence: 1.0,
+        source: "Engineering Playbook",
+        provenance_type: "HUMAN_INPUT"
+      }
+    ];
+
+    let currentDomain = 'ALL';
+
+    function renderMemories(items) {
+      const container = document.getElementById('memories-container');
+      document.getElementById('memory-count').innerText = `${items.length} items`;
+
+      if (items.length === 0) {
+        container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 30px;">No memory records found matching query.</div>';
+        return;
+      }
+
+      container.innerHTML = items.map(m => {
+        let badgeClass = 'badge-kb';
+        if (m.domain === 'COMPANY') badgeClass = 'badge-company';
+        if (m.domain === 'POLICY') badgeClass = 'badge-policy';
+        if (m.domain === 'DECISION') badgeClass = 'badge-decision';
+        if (m.domain === 'FAILURE') badgeClass = 'badge-failure';
+
+        return `
+          <div class="memory-item">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="badge ${badgeClass}">${m.domain}</span>
+              <span class="mono" style="font-size: 0.72rem; color: var(--text-muted);">${m.scope} • Confidence: ${Math.round(m.confidence * 100)}%</span>
+            </div>
+            <h4 style="font-size: 0.95rem; font-weight: 700;">${m.title}</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">${m.content}</p>
+            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #a5b4fc; margin-top: 4px;">
+              <span>Source: ${m.source}</span>
+              <span class="mono">${m.provenance_type}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterDomain(domain) {
+      currentDomain = domain;
+      document.querySelectorAll('.domain-pills .pill').forEach(p => p.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (domain === 'ALL') {
+        renderMemories(mockMemories);
+      } else {
+        const filtered = mockMemories.filter(m => m.domain === domain);
+        renderMemories(filtered);
+      }
+    }
+
+    function handleSearch(e) {
+      if (e.key === 'Enter') executeSearch();
+    }
+
+    function executeSearch() {
+      const q = document.getElementById('search-input').value.toLowerCase().trim();
+      if (!q) {
+        renderMemories(mockMemories);
+        return;
+      }
+      const results = mockMemories.filter(m => 
+        m.title.toLowerCase().includes(q) || 
+        m.content.toLowerCase().includes(q) || 
+        m.source.toLowerCase().includes(q)
+      );
+      renderMemories(results);
+    }
+
+    function assembleContext() {
+      const objective = document.getElementById('ctx-objective').value;
+      const role = document.getElementById('ctx-role').value;
+
+      document.getElementById('assembled-output').style.display = 'block';
+      document.getElementById('out-selected').innerText = "2 memories (Policy & Failure)";
+      document.getElementById('out-tokens').innerText = "186 tokens";
+
+      document.getElementById('out-prompt').innerText = 
+`### ORGANIZATIONAL CONTEXT (MINIMAL RELEVANT KNOWLEDGE)
+Task Objective: ${objective}
+---
+[POLICY MEMORY] Model Provider Data Classification Standard (Confidence: 100%)
+Customer PII must be sanitized before inference routing. Confidential customer data must never be transmitted to non-enterprise AI model endpoints without explicit sanitization.
+
+[FAILURE MEMORY] Post-Mortem: Unbounded Token Consumption Incident (Confidence: 95%)
+In Q2, recursive agent reflection loops caused runaway API spend. Resolution: Enforce maximum token ceilings and timeout guardrails on all agent execution lifecycles.
+---
+(Only authorized, minimal necessary context transmitted to model)`;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderMemories(mockMemories);
+    });
+  </script>
+</body>
+</html>
