@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="512" height="512">
+  <defs>
+    
+    <filter id="sacredGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4.5" flood-color="#F59E0B" flood-opacity="0.55" />
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+    
+    <linearGradient id="goldMain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="22%" stop-color="#FDE68A" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="78%" stop-color="#B45309" />
+      <stop offset="100%" stop-color="#78350F" />
+    </linearGradient>
+
+    <linearGradient id="goldBevel" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#78350F" />
+      <stop offset="30%" stop-color="#D97706" />
+      <stop offset="65%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#FEF3C7" />
+    </linearGradient>
+
+    <linearGradient id="goldHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="45%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#CA8A04" />
+    </linearGradient>
+
+    <radialGradient id="pommelRadial" cx="35%" cy="32%" r="68%">
+      <stop offset="0%" stop-color="#FFFBEB" />
+      <stop offset="35%" stop-color="#FCD34D" />
+      <stop offset="72%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#78350F" />
+    </radialGradient>
+
+    <radialGradient id="hubCoreRadial" cx="40%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="30%" stop-color="#FDE047" />
+      <stop offset="70%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#451A03" />
+    </radialGradient>
+  </defs>
+
+  <g filter="url(#sacredGlow)">
+    <!-- 8 Spokes & 8 Protruding Handles -->
+    
+      <g transform="rotate(0 100 100)">
+        <!-- Inner Spoke Base Collar -->
+        <rect x="95" y="75" width="10" height="5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+        <!-- Tapered Spoke Shaft -->
+        <polygon points="96.2,76 103.8,76 104.8,51 95.2,51" fill="url(#goldMain)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Spoke Center Ridge Highlight -->
+        <line x1="100" y1="75" x2="100" y2="51" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Outer Spoke Rim Collar -->
+        <rect x="94.5" y="48.5" width="11" height="4.5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+
+        <!-- Outer Protruding Handle Base Mount (Outside Rim) -->
+        <rect x="93.5" y="34.5" width="13" height="5.5" rx="1.8" fill="url(#goldBevel)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Tapered Grip Shaft -->
+        <polygon points="95.8,35 104.2,35 103.2,17.5 96.8,17.5" fill="url(#goldMain)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Center Specular Ridge -->
+        <line x1="100" y1="34.5" x2="100" y2="18" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Handle Upper Neck Ring -->
+        <rect x="94.5" y="16" width="11" height="3.8" rx="1.5" fill="url(#goldHighlight)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Handle Terminal Pommel Sphere (Eight-Handled Tip) -->
+        <circle cx="100" cy="10.5" r="6.2" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="1.1" />
+        <circle cx="98.2" cy="8.7" r="1.8" fill="#FFFBEB" opacity="0.85" />
+      </g>
+      <g transform="rotate(45 100 100)">
+        <!-- Inner Spoke Base Collar -->
+        <rect x="95" y="75" width="10" height="5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+        <!-- Tapered Spoke Shaft -->
+        <polygon points="96.2,76 103.8,76 104.8,51 95.2,51" fill="url(#goldMain)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Spoke Center Ridge Highlight -->
+        <line x1="100" y1="75" x2="100" y2="51" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Outer Spoke Rim Collar -->
+        <rect x="94.5" y="48.5" width="11" height="4.5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+
+        <!-- Outer Protruding Handle Base Mount (Outside Rim) -->
+        <rect x="93.5" y="34.5" width="13" height="5.5" rx="1.8" fill="url(#goldBevel)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Tapered Grip Shaft -->
+        <polygon points="95.8,35 104.2,35 103.2,17.5 96.8,17.5" fill="url(#goldMain)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Center Specular Ridge -->
+        <line x1="100" y1="34.5" x2="100" y2="18" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Handle Upper Neck Ring -->
+        <rect x="94.5" y="16" width="11" height="3.8" rx="1.5" fill="url(#goldHighlight)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Handle Terminal Pommel Sphere (Eight-Handled Tip) -->
+        <circle cx="100" cy="10.5" r="6.2" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="1.1" />
+        <circle cx="98.2" cy="8.7" r="1.8" fill="#FFFBEB" opacity="0.85" />
+      </g>
+      <g transform="rotate(90 100 100)">
+        <!-- Inner Spoke Base Collar -->
+        <rect x="95" y="75" width="10" height="5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+        <!-- Tapered Spoke Shaft -->
+        <polygon points="96.2,76 103.8,76 104.8,51 95.2,51" fill="url(#goldMain)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Spoke Center Ridge Highlight -->
+        <line x1="100" y1="75" x2="100" y2="51" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Outer Spoke Rim Collar -->
+        <rect x="94.5" y="48.5" width="11" height="4.5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+
+        <!-- Outer Protruding Handle Base Mount (Outside Rim) -->
+        <rect x="93.5" y="34.5" width="13" height="5.5" rx="1.8" fill="url(#goldBevel)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Tapered Grip Shaft -->
+        <polygon points="95.8,35 104.2,35 103.2,17.5 96.8,17.5" fill="url(#goldMain)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Center Specular Ridge -->
+        <line x1="100" y1="34.5" x2="100" y2="18" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Handle Upper Neck Ring -->
+        <rect x="94.5" y="16" width="11" height="3.8" rx="1.5" fill="url(#goldHighlight)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Handle Terminal Pommel Sphere (Eight-Handled Tip) -->
+        <circle cx="100" cy="10.5" r="6.2" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="1.1" />
+        <circle cx="98.2" cy="8.7" r="1.8" fill="#FFFBEB" opacity="0.85" />
+      </g>
+      <g transform="rotate(135 100 100)">
+        <!-- Inner Spoke Base Collar -->
+        <rect x="95" y="75" width="10" height="5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+        <!-- Tapered Spoke Shaft -->
+        <polygon points="96.2,76 103.8,76 104.8,51 95.2,51" fill="url(#goldMain)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Spoke Center Ridge Highlight -->
+        <line x1="100" y1="75" x2="100" y2="51" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Outer Spoke Rim Collar -->
+        <rect x="94.5" y="48.5" width="11" height="4.5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+
+        <!-- Outer Protruding Handle Base Mount (Outside Rim) -->
+        <rect x="93.5" y="34.5" width="13" height="5.5" rx="1.8" fill="url(#goldBevel)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Tapered Grip Shaft -->
+        <polygon points="95.8,35 104.2,35 103.2,17.5 96.8,17.5" fill="url(#goldMain)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Center Specular Ridge -->
+        <line x1="100" y1="34.5" x2="100" y2="18" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Handle Upper Neck Ring -->
+        <rect x="94.5" y="16" width="11" height="3.8" rx="1.5" fill="url(#goldHighlight)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Handle Terminal Pommel Sphere (Eight-Handled Tip) -->
+        <circle cx="100" cy="10.5" r="6.2" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="1.1" />
+        <circle cx="98.2" cy="8.7" r="1.8" fill="#FFFBEB" opacity="0.85" />
+      </g>
+      <g transform="rotate(180 100 100)">
+        <!-- Inner Spoke Base Collar -->
+        <rect x="95" y="75" width="10" height="5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+        <!-- Tapered Spoke Shaft -->
+        <polygon points="96.2,76 103.8,76 104.8,51 95.2,51" fill="url(#goldMain)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Spoke Center Ridge Highlight -->
+        <line x1="100" y1="75" x2="100" y2="51" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Outer Spoke Rim Collar -->
+        <rect x="94.5" y="48.5" width="11" height="4.5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+
+        <!-- Outer Protruding Handle Base Mount (Outside Rim) -->
+        <rect x="93.5" y="34.5" width="13" height="5.5" rx="1.8" fill="url(#goldBevel)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Tapered Grip Shaft -->
+        <polygon points="95.8,35 104.2,35 103.2,17.5 96.8,17.5" fill="url(#goldMain)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Center Specular Ridge -->
+        <line x1="100" y1="34.5" x2="100" y2="18" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Handle Upper Neck Ring -->
+        <rect x="94.5" y="16" width="11" height="3.8" rx="1.5" fill="url(#goldHighlight)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Handle Terminal Pommel Sphere (Eight-Handled Tip) -->
+        <circle cx="100" cy="10.5" r="6.2" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="1.1" />
+        <circle cx="98.2" cy="8.7" r="1.8" fill="#FFFBEB" opacity="0.85" />
+      </g>
+      <g transform="rotate(225 100 100)">
+        <!-- Inner Spoke Base Collar -->
+        <rect x="95" y="75" width="10" height="5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+        <!-- Tapered Spoke Shaft -->
+        <polygon points="96.2,76 103.8,76 104.8,51 95.2,51" fill="url(#goldMain)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Spoke Center Ridge Highlight -->
+        <line x1="100" y1="75" x2="100" y2="51" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Outer Spoke Rim Collar -->
+        <rect x="94.5" y="48.5" width="11" height="4.5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+
+        <!-- Outer Protruding Handle Base Mount (Outside Rim) -->
+        <rect x="93.5" y="34.5" width="13" height="5.5" rx="1.8" fill="url(#goldBevel)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Tapered Grip Shaft -->
+        <polygon points="95.8,35 104.2,35 103.2,17.5 96.8,17.5" fill="url(#goldMain)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Center Specular Ridge -->
+        <line x1="100" y1="34.5" x2="100" y2="18" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Handle Upper Neck Ring -->
+        <rect x="94.5" y="16" width="11" height="3.8" rx="1.5" fill="url(#goldHighlight)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Handle Terminal Pommel Sphere (Eight-Handled Tip) -->
+        <circle cx="100" cy="10.5" r="6.2" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="1.1" />
+        <circle cx="98.2" cy="8.7" r="1.8" fill="#FFFBEB" opacity="0.85" />
+      </g>
+      <g transform="rotate(270 100 100)">
+        <!-- Inner Spoke Base Collar -->
+        <rect x="95" y="75" width="10" height="5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+        <!-- Tapered Spoke Shaft -->
+        <polygon points="96.2,76 103.8,76 104.8,51 95.2,51" fill="url(#goldMain)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Spoke Center Ridge Highlight -->
+        <line x1="100" y1="75" x2="100" y2="51" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Outer Spoke Rim Collar -->
+        <rect x="94.5" y="48.5" width="11" height="4.5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+
+        <!-- Outer Protruding Handle Base Mount (Outside Rim) -->
+        <rect x="93.5" y="34.5" width="13" height="5.5" rx="1.8" fill="url(#goldBevel)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Tapered Grip Shaft -->
+        <polygon points="95.8,35 104.2,35 103.2,17.5 96.8,17.5" fill="url(#goldMain)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Center Specular Ridge -->
+        <line x1="100" y1="34.5" x2="100" y2="18" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Handle Upper Neck Ring -->
+        <rect x="94.5" y="16" width="11" height="3.8" rx="1.5" fill="url(#goldHighlight)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Handle Terminal Pommel Sphere (Eight-Handled Tip) -->
+        <circle cx="100" cy="10.5" r="6.2" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="1.1" />
+        <circle cx="98.2" cy="8.7" r="1.8" fill="#FFFBEB" opacity="0.85" />
+      </g>
+      <g transform="rotate(315 100 100)">
+        <!-- Inner Spoke Base Collar -->
+        <rect x="95" y="75" width="10" height="5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+        <!-- Tapered Spoke Shaft -->
+        <polygon points="96.2,76 103.8,76 104.8,51 95.2,51" fill="url(#goldMain)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Spoke Center Ridge Highlight -->
+        <line x1="100" y1="75" x2="100" y2="51" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Outer Spoke Rim Collar -->
+        <rect x="94.5" y="48.5" width="11" height="4.5" rx="1.5" fill="url(#goldBevel)" stroke="#78350F" stroke-width="0.8" />
+
+        <!-- Outer Protruding Handle Base Mount (Outside Rim) -->
+        <rect x="93.5" y="34.5" width="13" height="5.5" rx="1.8" fill="url(#goldBevel)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Tapered Grip Shaft -->
+        <polygon points="95.8,35 104.2,35 103.2,17.5 96.8,17.5" fill="url(#goldMain)" stroke="#78350F" stroke-width="1" />
+        <!-- Handle Center Specular Ridge -->
+        <line x1="100" y1="34.5" x2="100" y2="18" stroke="url(#goldHighlight)" stroke-width="1.8" stroke-linecap="round" />
+        <!-- Handle Upper Neck Ring -->
+        <rect x="94.5" y="16" width="11" height="3.8" rx="1.5" fill="url(#goldHighlight)" stroke="#78350F" stroke-width="0.9" />
+        <!-- Handle Terminal Pommel Sphere (Eight-Handled Tip) -->
+        <circle cx="100" cy="10.5" r="6.2" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="1.1" />
+        <circle cx="98.2" cy="8.7" r="1.8" fill="#FFFBEB" opacity="0.85" />
+      </g>
+
+    <!-- Main Outer Dharma Wheel Rim (Concentric Beveled Rings) -->
+    <!-- Outer Rim Shadow/Edge -->
+    <circle cx="100" cy="100" r="61" fill="none" stroke="#78350F" stroke-width="2" />
+    <!-- Main Rim Torus Body -->
+    <circle cx="100" cy="100" r="56" fill="none" stroke="url(#goldMain)" stroke-width="10.5" />
+    <!-- Inner Rim Channel -->
+    <circle cx="100" cy="100" r="56" fill="none" stroke="url(#goldBevel)" stroke-width="5.5" />
+    <!-- High-Contrast Specular Crest on Rim -->
+    <circle cx="100" cy="100" r="56" fill="none" stroke="url(#goldHighlight)" stroke-width="1.8" />
+    <!-- Inner Rim Border -->
+    <circle cx="100" cy="100" r="50.5" fill="none" stroke="#78350F" stroke-width="1.5" />
+
+    <!-- Rim Studs / Sacred Bosses -->
+    <circle cx="100.00" cy="44.00" r="3.1" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="0.9" /><circle cx="121.43" cy="48.26" r="1.9" fill="#FEF3C7" stroke="#78350F" stroke-width="0.7" /><circle cx="139.60" cy="60.40" r="3.1" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="0.9" /><circle cx="151.74" cy="78.57" r="1.9" fill="#FEF3C7" stroke="#78350F" stroke-width="0.7" /><circle cx="156.00" cy="100.00" r="3.1" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="0.9" /><circle cx="151.74" cy="121.43" r="1.9" fill="#FEF3C7" stroke="#78350F" stroke-width="0.7" /><circle cx="139.60" cy="139.60" r="3.1" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="0.9" /><circle cx="121.43" cy="151.74" r="1.9" fill="#FEF3C7" stroke="#78350F" stroke-width="0.7" /><circle cx="100.00" cy="156.00" r="3.1" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="0.9" /><circle cx="78.57" cy="151.74" r="1.9" fill="#FEF3C7" stroke="#78350F" stroke-width="0.7" /><circle cx="60.40" cy="139.60" r="3.1" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="0.9" /><circle cx="48.26" cy="121.43" r="1.9" fill="#FEF3C7" stroke="#78350F" stroke-width="0.7" /><circle cx="44.00" cy="100.00" r="3.1" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="0.9" /><circle cx="48.26" cy="78.57" r="1.9" fill="#FEF3C7" stroke="#78350F" stroke-width="0.7" /><circle cx="60.40" cy="60.40" r="3.1" fill="url(#pommelRadial)" stroke="#78350F" stroke-width="0.9" /><circle cx="78.57" cy="48.26" r="1.9" fill="#FEF3C7" stroke="#78350F" stroke-width="0.7" />
+
+    <!-- Central Hub Assembly -->
+    <!-- Outer Hub Collar -->
+    <circle cx="100" cy="100" r="24" fill="url(#goldBevel)" stroke="#78350F" stroke-width="1.6" />
+    <!-- Recessed Dark Bronze Sanctuary Ring -->
+    <circle cx="100" cy="100" r="18.5" fill="#271203" stroke="url(#goldHighlight)" stroke-width="1.5" />
+    <!-- Inner Sacred Ring -->
+    <circle cx="100" cy="100" r="13.5" fill="none" stroke="url(#goldMain)" stroke-width="3" />
+    <!-- Central Axis Jewel -->
+    <circle cx="100" cy="100" r="7.5" fill="url(#hubCoreRadial)" stroke="#78350F" stroke-width="1.2" />
+    <circle cx="98" cy="98" r="2.2" fill="#FFFFFF" opacity="0.9" />
+  </g>
+</svg>

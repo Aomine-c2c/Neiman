@@ -1,0 +1,14 @@
+{
+  "name": "@neiman/api",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "dependencies": {
+    "@neiman/config": "*",
+    "@neiman/core": "*",
+    "@neiman/types": "*",
+    "@neiman/events": "*",
+    "@neiman/auth": "*"
+  }
+}

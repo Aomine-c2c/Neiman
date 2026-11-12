@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "historyId": "410f3661-b2dc-44a2-8e92-cb317308e2c8",
+  "currentRevision": "88af7bad-8877-46fd-b7e9-9656517477d1",
+  "pendingChanges": false,
+  "files": {
+    "assets/sfx/impact/impactBell_heavy_000.ogg": {
+      "hash": "94b8bb5f2d43ab65e4bcc32b28562416e9bc2c51d9fd4be1e333660ee52f977f",
+      "content": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/94/94b8bb5f2d43ab65e4bcc32b28562416e9bc2c51d9fd4be1e333660ee52f977f"
+    },
+    "assets/sfx/impact/impactSoft_medium_001.ogg": {
+      "hash": "7642a4fd43e547afe4f7adfadb3dabb681c0ff512f52c1674bae30a726841faf",
+      "content": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/76/7642a4fd43e547afe4f7adfadb3dabb681c0ff512f52c1674bae30a726841faf"
+    },
+    "assets/sfx/interface/click_003.ogg": {
+      "hash": "2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292",
+      "content": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/2f/2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292"
+    },
+    "hyperframes.json": {
+      "hash": "35a6d4ea79ebe911f0d81705f7aace5d8ff0316b745b0311d56af50c9c237cb7",
+      "content": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/35/35a6d4ea79ebe911f0d81705f7aace5d8ff0316b745b0311d56af50c9c237cb7"
+    },
+    "index.html": {
+      "hash": "edd2383ad67f9a0950a9a402b177f2ee17229ab9a6f6a9709bc59d280e807f69",
+      "content": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/ed/edd2383ad67f9a0950a9a402b177f2ee17229ab9a6f6a9709bc59d280e807f69"
+    },
+    "meta.json": {
+      "hash": "4dd0434e524aedf6a331044705a8b43f2abea466fe979915f813534a4cd32083",
+      "content": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/4d/4dd0434e524aedf6a331044705a8b43f2abea466fe979915f813534a4cd32083"
+    },
+    "package.json": {
+      "hash": "8645fe866a5252dc4d3e0b8d27470a5cc76bc929791891817e97494c1bac21b5",
+      "content": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/86/8645fe866a5252dc4d3e0b8d27470a5cc76bc929791891817e97494c1bac21b5"
+    },
+    "assets/music/happy-beats-business-moves-vol-12-by-ende-dot-app.mp3": {
+      "hash": "5888d4bd2ba0119b87a94e502ae2cc401c08192945cc5e5c2f8e8a33aa47a0a1",
+      "content": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/58/5888d4bd2ba0119b87a94e502ae2cc401c08192945cc5e5c2f8e8a33aa47a0a1"
+    }
+  },
+  "revisions": {
+    "9b466bd1-0729-4bf1-baa6-42fe3a3e8699": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793871509618,
+      "endedAt": 1793871509625,
+      "files": {
+        "index.html": {
+          "before": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/8a/8a566ed0cfcd31db53364a1476b7048640df53ef8cb48b06e2c583bd2b606861",
+          "after": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/84/840f060b2bb606998066ef02cffdaca9a19caf9e80d753e60fdfb5501c3fbfbb"
+        }
+      }
+    },
+    "88af7bad-8877-46fd-b7e9-9656517477d1": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793871558638,
+      "endedAt": 1793871558644,
+      "files": {
+        "index.html": {
+          "before": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/84/840f060b2bb606998066ef02cffdaca9a19caf9e80d753e60fdfb5501c3fbfbb",
+          "after": "/home/devine-general/.cache/hyperframes/history/410f3661-b2dc-44a2-8e92-cb317308e2c8/blobs/ed/edd2383ad67f9a0950a9a402b177f2ee17229ab9a6f6a9709bc59d280e807f69"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": {
+      "revision": "88af7bad-8877-46fd-b7e9-9656517477d1",
+      "id": "591587c3-b7fd-4cb6-939f-cdd7c0fda332"
+    },
+    "revisions": {
+      "9b466bd1-0729-4bf1-baa6-42fe3a3e8699": [
+        {
+          "id": "cdd9f752-6e25-4cd3-9b3f-36d100cf11be",
+          "scope": "project",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 45000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1793871516406,
+          "contentHash": "cbbce1457f65a2c3c1627410f44e3b8484f61dbfd2821433bb3f68654048514a",
+          "revision": "9b466bd1-0729-4bf1-baa6-42fe3a3e8699",
+          "inputFingerprint": "4772f500571615d9b1408a0f300956049eababee1b7c12b9801fdb61b4928486",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "0bdf19f8-6f86-44d6-b146-5e8c8f0acd50"
+        }
+      ],
+      "88af7bad-8877-46fd-b7e9-9656517477d1": [
+        {
+          "id": "591587c3-b7fd-4cb6-939f-cdd7c0fda332",
+          "scope": "project",
+          "report": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-112100/composition/.hyperframes/artifacts/checks/591587c3-b7fd-4cb6-939f-cdd7c0fda332.json",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 45000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1793871563644,
+          "contentHash": "71ccc70d8e3b4bb498119880bfeb05e2998d1b8710c80f26da5e94d398b9e55d",
+          "revision": "88af7bad-8877-46fd-b7e9-9656517477d1",
+          "inputFingerprint": "0547ae7fc0dc3ac456950e5531cb7cd423f812d46f9cecae06c798c48213ed29",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
+    "unversioned": [
+      {
+        "id": "594c1dd9-2776-47ef-a1ec-b51122e5941b",
+        "scope": "project",
+        "report": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-112100/composition/.hyperframes/artifacts/checks/594c1dd9-2776-47ef-a1ec-b51122e5941b.json",
+        "metadata": {
+          "ok": true,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 45000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1793871414665,
+        "contentHash": "716762657ec1d55a3b7235ed449a7c810a5cd80357acb374f9afc760b1836204",
+        "revision": null,
+        "inputFingerprint": "a47fd23fec10fa0b9eef00d3866d6e6637339de79dc1505f267b11c77d06b7d3",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": null,
+    "revisions": {},
+    "unversioned": []
+  },
+  "renders": {
+    "latest": {
+      "id": "0bdf19f8-6f86-44d6-b146-5e8c8f0acd50",
+      "completedAt": 1793871603815,
+      "output": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-112100/brag.mp4",
+      "status": "completed",
+      "revision": "88af7bad-8877-46fd-b7e9-9656517477d1"
+    },
+    "retainedRevisions": [
+      "88af7bad-8877-46fd-b7e9-9656517477d1"
+    ]
+  },
+  "pendingArtifactCleanup": []
+}

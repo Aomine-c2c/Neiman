@@ -1,0 +1,2840 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "font_family_without_font_face",
+        "severity": "error",
+        "message": "Font family used without @font-face declaration: sfmono-regular. These are not in the auto-resolved font list, so the renderer cannot supply them automatically. Text will fall back to a generic font, producing incorrect typography in the video.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/devine-general/Projects/Sila/brag-output-2026-11-05-062825/composition/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add @font-face { font-family: '...'; src: url('capture/assets/fonts/...woff2'); } for each font family, pointing to the captured .woff2 files, or switch to a Google Fonts family. An OS font such as PingFang SC or Hiragino Sans renders locally from the installed copy, but a cloud render has no copy and refuses it."
+      }
+    ],
+    "filesScanned": 1
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "clip_media_fit",
+        "severity": "warning",
+        "message": "Audio \"review-click\" is 0.01s but its slot (data-duration) is 0.50s — the slot is shortened to the media length when rendered. Set data-duration to ~0.01s if that isn't intended.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "20",
+          "data-width": "1920",
+          "data-height": "1080"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "time": 0
+      }
+    ]
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 33,
+    "warningCount": 3,
+    "infoCount": 18,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 3.465,
+        "selector": "#s1-kicker",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 148,
+          "top": 375.59,
+          "right": 473.61,
+          "bottom": 401.59,
+          "width": 325.61,
+          "height": 26
+        },
+        "containerSelector": "#scene2",
+        "text": "NEIMAN / OPERATIONS OS",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 148,
+          "y": 375.59,
+          "width": 325.61,
+          "height": 26
+        },
+        "firstSeen": 3.465,
+        "lastSeen": 3.55,
+        "occurrences": 2,
+        "heldMs": 84.99999999999997,
+        "times": [
+          3.465,
+          3.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 3.465,
+        "selector": "#s1-title",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 124,
+          "top": 448.59,
+          "right": 1151.88,
+          "bottom": 557.59,
+          "width": 1027.88,
+          "height": 109
+        },
+        "containerSelector": "#scene2",
+        "text": "Build the organization.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 124,
+          "y": 448.59,
+          "width": 1027.88,
+          "height": 109
+        },
+        "firstSeen": 3.465,
+        "lastSeen": 3.55,
+        "occurrences": 2,
+        "heldMs": 84.99999999999997,
+        "times": [
+          3.465,
+          3.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 3.465,
+        "selector": "#s1-title > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 124,
+          "top": 535.5,
+          "right": 1375.33,
+          "bottom": 644.5,
+          "width": 1251.33,
+          "height": 109
+        },
+        "containerSelector": "#scene2",
+        "text": "Keep the operator in charge.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 124,
+          "y": 535.5,
+          "width": 1251.33,
+          "height": 109
+        },
+        "firstSeen": 3.465,
+        "lastSeen": 3.55,
+        "occurrences": 2,
+        "heldMs": 84.99999999999997,
+        "times": [
+          3.465,
+          3.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 3.465,
+        "selector": "#s1-subline",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 124,
+          "top": 664.41,
+          "right": 762.41,
+          "bottom": 701.41,
+          "width": 638.41,
+          "height": 37
+        },
+        "containerSelector": "#scene2",
+        "text": "AI operations, visible and reviewable.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 124,
+          "y": 664.41,
+          "width": 638.41,
+          "height": 37
+        },
+        "firstSeen": 3.465,
+        "lastSeen": 3.55,
+        "occurrences": 2,
+        "heldMs": 84.99999999999997,
+        "times": [
+          3.465,
+          3.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 3.465,
+        "selector": "#scene1 > div:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1573.03,
+          "top": 1005,
+          "right": 1838,
+          "bottom": 1026,
+          "width": 264.97,
+          "height": 21
+        },
+        "containerSelector": "#scene2",
+        "text": "01 / operator authority",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1573.03,
+          "y": 1005,
+          "width": 264.97,
+          "height": 21
+        },
+        "firstSeen": 3.465,
+        "lastSeen": 3.55,
+        "occurrences": 2,
+        "heldMs": 84.99999999999997,
+        "times": [
+          3.465,
+          3.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-kicker",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 116,
+          "top": 70,
+          "right": 426.81,
+          "bottom": 96,
+          "width": 310.81,
+          "height": 26
+        },
+        "containerSelector": "#scene3",
+        "text": "NEIMAN / CONTROL ROOM",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 116,
+          "y": 70,
+          "width": 310.81,
+          "height": 26
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-title",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 92,
+          "top": 88,
+          "right": 1071.92,
+          "bottom": 164,
+          "width": 979.92,
+          "height": 76
+        },
+        "containerSelector": "#scene3",
+        "text": "Operational state, in one view.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 92,
+          "y": 88,
+          "width": 979.92,
+          "height": 76
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-preview",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1442.36,
+          "top": 123.47,
+          "right": 1811,
+          "bottom": 144.47,
+          "width": 368.64,
+          "height": 21
+        },
+        "containerSelector": "#scene3",
+        "text": "WORKSPACE PREVIEW · ILLUSTRATIVE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1442.36,
+          "y": 123.47,
+          "width": 368.64,
+          "height": 21
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-workforce > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 131,
+          "top": 195.97,
+          "right": 301.86,
+          "bottom": 217.97,
+          "width": 170.86,
+          "height": 22
+        },
+        "containerSelector": "#scene3",
+        "text": "Swarm Workforce",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 131,
+          "y": 195.97,
+          "width": 170.86,
+          "height": 22
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-workforce > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 113,
+          "top": 322.89,
+          "right": 255.81,
+          "bottom": 344.89,
+          "width": 142.81,
+          "height": 22
+        },
+        "containerSelector": "#scene3",
+        "text": "Agent profiles",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 113,
+          "y": 322.89,
+          "width": 142.81,
+          "height": 22
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-workforce > div:nth-of-type(2) > div:nth-of-type(1) > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 464.59,
+          "top": 323.39,
+          "right": 551,
+          "bottom": 344.39,
+          "width": 86.41,
+          "height": 21
+        },
+        "containerSelector": "#scene3",
+        "text": "Workforce",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 464.59,
+          "y": 323.39,
+          "width": 86.41,
+          "height": 21
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-workforce > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 113,
+          "top": 377.89,
+          "right": 296.61,
+          "bottom": 399.89,
+          "width": 183.61,
+          "height": 22
+        },
+        "containerSelector": "#scene3",
+        "text": "Roles & assignment",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 113,
+          "y": 377.89,
+          "width": 183.61,
+          "height": 22
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-workforce > div:nth-of-type(2) > div:nth-of-type(2) > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 454.98,
+          "top": 378.39,
+          "right": 551,
+          "bottom": 399.39,
+          "width": 96.02,
+          "height": 21
+        },
+        "containerSelector": "#scene3",
+        "text": "Operations",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 454.98,
+          "y": 378.39,
+          "width": 96.02,
+          "height": 21
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-workforce > div:nth-of-type(2) > p:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 113,
+          "top": 425.89,
+          "right": 512.61,
+          "bottom": 475.89,
+          "width": 399.61,
+          "height": 50
+        },
+        "containerSelector": "#scene3",
+        "text": "Review configured agents and the work assigned to them.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 113,
+          "y": 425.89,
+          "width": 399.61,
+          "height": 50
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-directives > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 627,
+          "top": 195.97,
+          "right": 1037.05,
+          "bottom": 217.97,
+          "width": 410.05,
+          "height": 22
+        },
+        "containerSelector": "#scene3",
+        "text": "CTO Directives & Interaction Console",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 627,
+          "y": 195.97,
+          "width": 410.05,
+          "height": 22
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-directives > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 609,
+          "top": 254.47,
+          "right": 885.48,
+          "bottom": 275.47,
+          "width": 276.48,
+          "height": 21
+        },
+        "containerSelector": "#scene3",
+        "text": "Operator command surface",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 609,
+          "y": 254.47,
+          "width": 276.48,
+          "height": 21
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-directives > div:nth-of-type(2) > p:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 609,
+          "top": 401.67,
+          "right": 1300.2,
+          "bottom": 451.67,
+          "width": 691.2,
+          "height": 50
+        },
+        "containerSelector": "#scene3",
+        "text": "Send an operational directive. Review its response and follow-up state in the Control Room.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 609,
+          "y": 401.67,
+          "width": 691.2,
+          "height": 50
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "div.directive-box",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 632,
+          "top": 602.89,
+          "right": 1233.81,
+          "bottom": 651.23,
+          "width": 601.81,
+          "height": 48.34
+        },
+        "containerSelector": "#scene3",
+        "text": "Directives are routed through the organization’s configured agent and governance workflow.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 632,
+          "y": 602.89,
+          "width": 601.81,
+          "height": 48.34
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "div.directive-button",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 645.91,
+          "top": 813.78,
+          "right": 824.11,
+          "bottom": 833.78,
+          "width": 178.2,
+          "height": 20
+        },
+        "containerSelector": "#scene3",
+        "text": "SEND CTO DIRECTIVE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 645.91,
+          "y": 813.78,
+          "width": 178.2,
+          "height": 20
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "div.directive-button > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 626,
+          "top": 813.78,
+          "right": 635.91,
+          "bottom": 833.78,
+          "width": 9.91,
+          "height": 20
+        },
+        "containerSelector": "#scene3",
+        "text": "›",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 626,
+          "y": 813.78,
+          "width": 9.91,
+          "height": 20
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "div.small-status",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 629,
+          "top": 970.98,
+          "right": 939.81,
+          "bottom": 988.98,
+          "width": 310.81,
+          "height": 18
+        },
+        "containerSelector": "#scene3",
+        "text": "Live state comes from your workspace.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 629,
+          "y": 970.98,
+          "width": 310.81,
+          "height": 18
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-audit > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1387,
+          "top": 195.97,
+          "right": 1614.81,
+          "bottom": 217.97,
+          "width": 227.81,
+          "height": 22
+        },
+        "containerSelector": "#scene3",
+        "text": "Live Audit Telemetry",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1387,
+          "y": 195.97,
+          "width": 227.81,
+          "height": 22
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-audit > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1369,
+          "top": 323.89,
+          "right": 1541.81,
+          "bottom": 344.89,
+          "width": 172.81,
+          "height": 21
+        },
+        "containerSelector": "#scene3",
+        "text": "Activity stream",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1369,
+          "y": 323.89,
+          "width": 172.81,
+          "height": 21
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-audit > div:nth-of-type(2) > p:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1369,
+          "top": 360.89,
+          "right": 1779.41,
+          "bottom": 410.89,
+          "width": 410.41,
+          "height": 50
+        },
+        "containerSelector": "#scene3",
+        "text": "Follow recorded activity and decisions as workspace events arrive.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1369,
+          "y": 360.89,
+          "width": 410.41,
+          "height": 50
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-audit > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1369,
+          "top": 435.89,
+          "right": 1450.61,
+          "bottom": 457.89,
+          "width": 81.61,
+          "height": 22
+        },
+        "containerSelector": "#scene3",
+        "text": "Activity",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1369,
+          "y": 435.89,
+          "width": 81.61,
+          "height": 22
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-audit > div:nth-of-type(2) > div:nth-of-type(2) > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1662.98,
+          "top": 436.39,
+          "right": 1807,
+          "bottom": 457.39,
+          "width": 144.02,
+          "height": 21
+        },
+        "containerSelector": "#scene3",
+        "text": "Recorded events",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1662.98,
+          "y": 436.39,
+          "width": 144.02,
+          "height": 21
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-approval > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 131,
+          "top": 590.81,
+          "right": 336.03,
+          "bottom": 612.81,
+          "width": 205.03,
+          "height": 22
+        },
+        "containerSelector": "#scene3",
+        "text": "CEO Approval Queue",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 131,
+          "y": 590.81,
+          "width": 205.03,
+          "height": 22
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-approval > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 113,
+          "top": 774.64,
+          "right": 251.25,
+          "bottom": 795.64,
+          "width": 138.25,
+          "height": 21
+        },
+        "containerSelector": "#scene3",
+        "text": "Human review",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 113,
+          "y": 774.64,
+          "width": 138.25,
+          "height": 21
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-approval > div:nth-of-type(2) > p:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 113,
+          "top": 811.64,
+          "right": 501.81,
+          "bottom": 861.64,
+          "width": 388.81,
+          "height": 50
+        },
+        "containerSelector": "#scene3",
+        "text": "Inspect pending decisions and choose whether to approve or reject.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 113,
+          "y": 811.64,
+          "width": 388.81,
+          "height": 50
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-health > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1387,
+          "top": 590.81,
+          "right": 1660.36,
+          "bottom": 612.81,
+          "width": 273.36,
+          "height": 22
+        },
+        "containerSelector": "#scene3",
+        "text": "System & Provider Health",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1387,
+          "y": 590.81,
+          "width": 273.36,
+          "height": 22
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-health > div:nth-of-type(2) > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1369,
+          "top": 774.64,
+          "right": 1645.48,
+          "bottom": 795.64,
+          "width": 276.48,
+          "height": 21
+        },
+        "containerSelector": "#scene3",
+        "text": "Connectivity & resources",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1369,
+          "y": 774.64,
+          "width": 276.48,
+          "height": 21
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#s2-health > div:nth-of-type(2) > p:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1369,
+          "top": 811.64,
+          "right": 1790.2,
+          "bottom": 861.64,
+          "width": 421.2,
+          "height": 50
+        },
+        "containerSelector": "#scene3",
+        "text": "Provider and resource state is reported from configured services.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1369,
+          "y": 811.64,
+          "width": 421.2,
+          "height": 50
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 8.44,
+        "selector": "#scene2 > div:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1642.16,
+          "top": 1005,
+          "right": 1838,
+          "bottom": 1026,
+          "width": 195.84,
+          "height": 21
+        },
+        "containerSelector": "#scene3",
+        "text": "02 / control room",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1642.16,
+          "y": 1005,
+          "width": 195.84,
+          "height": 21
+        },
+        "firstSeen": 8.44,
+        "lastSeen": 8.55,
+        "occurrences": 3,
+        "heldMs": 110.00000000000121,
+        "times": [
+          8.44,
+          8.5,
+          8.55
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 3.38,
+        "selector": "#scene1 > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1573.03,
+          "top": 1005,
+          "right": 1838,
+          "bottom": 1026,
+          "width": 264.97,
+          "height": 21
+        },
+        "containerSelector": "#scene2 > div:nth-of-type(2)",
+        "text": "01 / OPERATOR AUTHORITY",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1573.03,
+          "y": 1005,
+          "width": 264.97,
+          "height": 21
+        },
+        "firstSeen": 3.375,
+        "lastSeen": 3.465,
+        "occurrences": 3,
+        "heldMs": 89.99999999999986,
+        "times": [
+          3.375,
+          3.38,
+          3.465
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 8.38,
+        "selector": "#scene2 > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1642.16,
+          "top": 1005,
+          "right": 1838,
+          "bottom": 1026,
+          "width": 195.84,
+          "height": 21
+        },
+        "containerSelector": "#scene3 > div:nth-of-type(2)",
+        "text": "02 / CONTROL ROOM",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1642.16,
+          "y": 1005,
+          "width": 195.84,
+          "height": 21
+        },
+        "firstSeen": 8.375,
+        "lastSeen": 8.44,
+        "occurrences": 3,
+        "heldMs": 64.9999999999995,
+        "times": [
+          8.375,
+          8.38,
+          8.44
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "warning",
+        "time": 13.42,
+        "selector": "#scene3 > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1642.16,
+          "top": 1005,
+          "right": 1838,
+          "bottom": 1026,
+          "width": 195.84,
+          "height": 21
+        },
+        "containerSelector": "#scene4 > div:nth-of-type(2)",
+        "text": "03 / HUMAN REVIEW",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1642.16,
+          "y": 1005,
+          "width": 195.84,
+          "height": 21
+        },
+        "firstSeen": 13.375,
+        "lastSeen": 13.42,
+        "occurrences": 2,
+        "heldMs": 44.99999999999993,
+        "times": [
+          13.375,
+          13.42
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-kicker",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 134,
+          "top": 271.3,
+          "right": 400.41,
+          "bottom": 297.3,
+          "width": 266.41,
+          "height": 26
+        },
+        "containerSelector": "#scene4",
+        "text": "VISIBLE GOVERNANCE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 134,
+          "y": 271.3,
+          "width": 266.41,
+          "height": 26
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-title",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 110,
+          "top": 313.3,
+          "right": 735.67,
+          "bottom": 422.3,
+          "width": 625.67,
+          "height": 109
+        },
+        "containerSelector": "#scene4",
+        "text": "Work can move.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 110,
+          "y": 313.3,
+          "width": 625.67,
+          "height": 109
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-title > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 110,
+          "top": 400.2,
+          "right": 1093.19,
+          "bottom": 509.2,
+          "width": 983.19,
+          "height": 109
+        },
+        "containerSelector": "#scene4",
+        "text": "Authority stays human.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 110,
+          "y": 400.2,
+          "width": 983.19,
+          "height": 109
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step1 > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 135,
+          "top": 575.11,
+          "right": 250.2,
+          "bottom": 596.11,
+          "width": 115.2,
+          "height": 21
+        },
+        "containerSelector": "#scene4",
+        "text": "01 / INPUT",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 135,
+          "y": 575.11,
+          "width": 115.2,
+          "height": 21
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step1 > strong:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 135,
+          "top": 632.02,
+          "right": 267.48,
+          "bottom": 662.02,
+          "width": 132.48,
+          "height": 30
+        },
+        "containerSelector": "#scene4",
+        "text": "DIRECTIVE",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 135,
+          "y": 632.02,
+          "width": 132.48,
+          "height": 30
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step1 > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 135,
+          "top": 698.92,
+          "right": 365.41,
+          "bottom": 719.92,
+          "width": 230.41,
+          "height": 21
+        },
+        "containerSelector": "#scene4",
+        "text": "Operator gives direction",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 135,
+          "y": 698.92,
+          "width": 230.41,
+          "height": 21
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step2 > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 565.5,
+          "top": 575.11,
+          "right": 703.75,
+          "bottom": 596.11,
+          "width": 138.25,
+          "height": 21
+        },
+        "containerSelector": "#scene4",
+        "text": "02 / PROCESS",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 565.5,
+          "y": 575.11,
+          "width": 138.25,
+          "height": 21
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step2 > strong:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 565.5,
+          "top": 632.02,
+          "right": 624.39,
+          "bottom": 662.02,
+          "width": 58.89,
+          "height": 30
+        },
+        "containerSelector": "#scene4",
+        "text": "WORK",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 565.5,
+          "y": 632.02,
+          "width": 58.89,
+          "height": 30
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step2 > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 565.5,
+          "top": 698.92,
+          "right": 853.52,
+          "bottom": 719.92,
+          "width": 288.02,
+          "height": 21
+        },
+        "containerSelector": "#scene4",
+        "text": "Agents follow configured tasks",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 565.5,
+          "y": 698.92,
+          "width": 288.02,
+          "height": 21
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step3 > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 996,
+          "top": 575.11,
+          "right": 1134.25,
+          "bottom": 596.11,
+          "width": 138.25,
+          "height": 21
+        },
+        "containerSelector": "#scene4",
+        "text": "03 / CONTROL",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 996,
+          "y": 575.11,
+          "width": 138.25,
+          "height": 21
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step3 > strong:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 996,
+          "top": 632.02,
+          "right": 1172.64,
+          "bottom": 662.02,
+          "width": 176.64,
+          "height": 30
+        },
+        "containerSelector": "#scene4",
+        "text": "HUMAN REVIEW",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 996,
+          "y": 632.02,
+          "width": 176.64,
+          "height": 30
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step3 > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 996,
+          "top": 698.92,
+          "right": 1245.61,
+          "bottom": 719.92,
+          "width": 249.61,
+          "height": 21
+        },
+        "containerSelector": "#scene4",
+        "text": "Review sensitive decisions",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 996,
+          "y": 698.92,
+          "width": 249.61,
+          "height": 21
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step4 > span:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1426.5,
+          "top": 575.11,
+          "right": 1553.23,
+          "bottom": 596.11,
+          "width": 126.73,
+          "height": 21
+        },
+        "containerSelector": "#scene4",
+        "text": "04 / RECORD",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1426.5,
+          "y": 575.11,
+          "width": 126.73,
+          "height": 21
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step4 > strong:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1426.5,
+          "top": 632.02,
+          "right": 1588.42,
+          "bottom": 662.02,
+          "width": 161.92,
+          "height": 30
+        },
+        "containerSelector": "#scene4",
+        "text": "AUDIT TRAIL",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1426.5,
+          "y": 632.02,
+          "width": 161.92,
+          "height": 30
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-step4 > small:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1426.5,
+          "top": 698.92,
+          "right": 1676.11,
+          "bottom": 719.92,
+          "width": 249.61,
+          "height": 21
+        },
+        "containerSelector": "#scene4",
+        "text": "Keep decisions inspectable",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1426.5,
+          "y": 698.92,
+          "width": 249.61,
+          "height": 21
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-caption",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 758,
+          "top": 776.11,
+          "right": 1521.2,
+          "bottom": 807.11,
+          "width": 763.2,
+          "height": 31
+        },
+        "containerSelector": "#scene4",
+        "text": "This is a product-flow illustration, not a live run.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 758,
+          "y": 776.11,
+          "width": 763.2,
+          "height": 31
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#s3-caption > strong:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 110,
+          "top": 776.11,
+          "right": 758,
+          "bottom": 807.11,
+          "width": 648,
+          "height": 31
+        },
+        "containerSelector": "#scene4",
+        "text": "Review sensitive actions before they proceed.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 110,
+          "y": 776.11,
+          "width": 648,
+          "height": 31
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 13.51,
+        "selector": "#scene3 > div:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 1642.16,
+          "top": 1005,
+          "right": 1838,
+          "bottom": 1026,
+          "width": 195.84,
+          "height": 21
+        },
+        "containerSelector": "#scene4",
+        "text": "03 / human review",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 0,
+          "end": 20
+        },
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 1642.16,
+          "y": 1005,
+          "width": 195.84,
+          "height": 21
+        },
+        "firstSeen": 13.51,
+        "lastSeen": 13.51,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          13.51
+        ]
+      }
+    ],
+    "duration": 20,
+    "samples": [
+      0.16,
+      0.255,
+      0.35,
+      0.425,
+      0.5,
+      0.605,
+      0.71,
+      0.855,
+      1,
+      1.025,
+      1.05,
+      1.111,
+      1.125,
+      1.2,
+      1.375,
+      1.55,
+      2.375,
+      3.2,
+      3.29,
+      3.333,
+      3.38,
+      3.465,
+      3.55,
+      3.575,
+      3.6,
+      3.66,
+      3.72,
+      3.775,
+      3.83,
+      3.865,
+      3.9,
+      4,
+      4.1,
+      4.11,
+      4.12,
+      4.5,
+      4.88,
+      5.556,
+      6.54,
+      7.778,
+      8.2,
+      8.29,
+      8.38,
+      8.44,
+      8.5,
+      8.55,
+      8.6,
+      8.715,
+      8.83,
+      8.845,
+      8.86,
+      8.955,
+      9.05,
+      9.375,
+      9.7,
+      9.785,
+      9.87,
+      10,
+      10.025,
+      10.18,
+      11.665,
+      12.222,
+      13.15,
+      13.285,
+      13.42,
+      13.51,
+      13.6,
+      13.66,
+      13.72,
+      13.86,
+      14,
+      14.035,
+      14.07,
+      14.195,
+      14.32,
+      14.37,
+      14.42,
+      14.444,
+      14.485,
+      14.55,
+      14.735,
+      14.92,
+      16.667,
+      17.46,
+      18.889,
+      20
+    ],
+    "transitionSamples": [
+      0.16,
+      0.255,
+      0.35,
+      0.425,
+      0.5,
+      0.605,
+      0.71,
+      0.855,
+      1,
+      1.025,
+      1.05,
+      1.125,
+      1.2,
+      1.375,
+      1.55,
+      2.375,
+      3.2,
+      3.29,
+      3.38,
+      3.465,
+      3.55,
+      3.575,
+      3.6,
+      3.66,
+      3.72,
+      3.775,
+      3.83,
+      3.865,
+      3.9,
+      4,
+      4.1,
+      4.11,
+      4.12,
+      4.5,
+      4.88,
+      6.54,
+      8.2,
+      8.29,
+      8.38,
+      8.44,
+      8.5,
+      8.55,
+      8.6,
+      8.715,
+      8.83,
+      8.845,
+      8.86,
+      8.955,
+      9.05,
+      9.375,
+      9.7,
+      9.785,
+      9.87,
+      10.025,
+      10.18,
+      11.665,
+      13.15,
+      13.285,
+      13.42,
+      13.51,
+      13.6,
+      13.66,
+      13.72,
+      13.86,
+      14,
+      14.035,
+      14.07,
+      14.195,
+      14.32,
+      14.37,
+      14.42,
+      14.485,
+      14.55,
+      14.735,
+      14.92,
+      17.46,
+      20
+    ],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 54,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      0.16,
+      3.465,
+      8.38,
+      13.285,
+      20
+    ],
+    "checked": 60,
+    "passed": 60
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 48 text elements stay under it for 0.5 s or more, the smallest \"Live state comes from your workspace.\" at 14 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "Live state comes from your workspace.",
+        "selector": "div.small-status",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 629,
+          "y": 981.94,
+          "width": 310.81,
+          "height": 18
+        },
+        "time": 4.125,
+        "times": [
+          0,
+          0.375,
+          3.5,
+          3.5,
+          3.875,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4.125,
+          4.125,
+          4.125,
+          4.125,
+          4.125,
+          4.125,
+          4.25,
+          4.25,
+          4.25,
+          4.25,
+          4.25,
+          4.375,
+          4.375,
+          4.375,
+          4.5,
+          4.5,
+          4.5,
+          8.5,
+          8.5,
+          9,
+          9,
+          9,
+          9.25,
+          9.25,
+          9.25,
+          9.375,
+          9.375,
+          9.375,
+          9.5,
+          9.5,
+          9.5,
+          9.875,
+          9.875,
+          13.5,
+          13.5,
+          14.25,
+          14.625
+        ],
+        "fontPx": 14,
+        "floorPx": 28,
+        "seconds": 4.375,
+        "elements": [
+          {
+            "selector": "div.small-status",
+            "text": "Live state comes from your workspace.",
+            "fontPx": 14,
+            "time": 4.125,
+            "seconds": 4.375
+          },
+          {
+            "selector": "div.directive-button",
+            "text": "SEND CTO DIRECTIVE",
+            "fontPx": 15,
+            "time": 4.125,
+            "seconds": 4.375
+          },
+          {
+            "selector": "#scene1 > div:nth-of-type(2)",
+            "text": "01 / operator authority",
+            "fontPx": 16,
+            "time": 0,
+            "seconds": 3.5
+          },
+          {
+            "selector": "#scene2 > div:nth-of-type(2)",
+            "text": "02 / control room",
+            "fontPx": 16,
+            "time": 3.5,
+            "seconds": 5
+          },
+          {
+            "selector": "#s2-preview",
+            "text": "WORKSPACE PREVIEW · ILLUSTRATIVE",
+            "fontPx": 16,
+            "time": 3.875,
+            "seconds": 4.625
+          },
+          {
+            "selector": "#s2-workforce > div:nth-of-type(2) > div:nth-of-type(1) > small:nth-of-type(1)",
+            "text": "Workforce",
+            "fontPx": 16,
+            "time": 4,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#s2-workforce > div:nth-of-type(2) > div:nth-of-type(2) > small:nth-of-type(1)",
+            "text": "Operations",
+            "fontPx": 16,
+            "time": 4,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#s2-directives > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Operator command surface",
+            "fontPx": 16,
+            "time": 4.125,
+            "seconds": 4.375
+          },
+          {
+            "selector": "#s2-audit > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Activity stream",
+            "fontPx": 16,
+            "time": 4.25,
+            "seconds": 4.25
+          },
+          {
+            "selector": "#s2-audit > div:nth-of-type(2) > div:nth-of-type(2) > small:nth-of-type(1)",
+            "text": "Recorded events",
+            "fontPx": 16,
+            "time": 4.25,
+            "seconds": 4.25
+          },
+          {
+            "selector": "#s2-approval > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Human review",
+            "fontPx": 16,
+            "time": 4.375,
+            "seconds": 4.125
+          },
+          {
+            "selector": "#s2-health > div:nth-of-type(2) > div:nth-of-type(1)",
+            "text": "Connectivity & resources",
+            "fontPx": 16,
+            "time": 4.5,
+            "seconds": 4
+          },
+          {
+            "selector": "#scene3 > div:nth-of-type(2)",
+            "text": "03 / human review",
+            "fontPx": 16,
+            "time": 8.5,
+            "seconds": 5
+          },
+          {
+            "selector": "#s3-step1 > span:nth-of-type(1)",
+            "text": "01 / INPUT",
+            "fontPx": 16,
+            "time": 9,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#s3-step1 > small:nth-of-type(1)",
+            "text": "Operator gives direction",
+            "fontPx": 16,
+            "time": 9,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#s3-step2 > span:nth-of-type(1)",
+            "text": "02 / PROCESS",
+            "fontPx": 16,
+            "time": 9.25,
+            "seconds": 4.25
+          },
+          {
+            "selector": "#s3-step2 > small:nth-of-type(1)",
+            "text": "Agents follow configured tasks",
+            "fontPx": 16,
+            "time": 9.25,
+            "seconds": 4.25
+          },
+          {
+            "selector": "#s3-step3 > span:nth-of-type(1)",
+            "text": "03 / CONTROL",
+            "fontPx": 16,
+            "time": 9.375,
+            "seconds": 4.125
+          },
+          {
+            "selector": "#s3-step3 > small:nth-of-type(1)",
+            "text": "Review sensitive decisions",
+            "fontPx": 16,
+            "time": 9.375,
+            "seconds": 4.125
+          },
+          {
+            "selector": "#s3-step4 > span:nth-of-type(1)",
+            "text": "04 / RECORD",
+            "fontPx": 16,
+            "time": 9.5,
+            "seconds": 4
+          },
+          {
+            "selector": "#s3-step4 > small:nth-of-type(1)",
+            "text": "Keep decisions inspectable",
+            "fontPx": 16,
+            "time": 9.5,
+            "seconds": 4
+          },
+          {
+            "selector": "#scene4 > div:nth-of-type(2)",
+            "text": "04 / NEIMAN",
+            "fontPx": 16,
+            "time": 13.5,
+            "seconds": 6.5
+          },
+          {
+            "selector": "#s2-workforce > div:nth-of-type(1)",
+            "text": "Swarm Workforce",
+            "fontPx": 17,
+            "time": 4,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#s2-workforce > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1)",
+            "text": "Agent profiles",
+            "fontPx": 17,
+            "time": 4,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#s2-workforce > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(1)",
+            "text": "Roles & assignment",
+            "fontPx": 17,
+            "time": 4,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#s2-directives > div:nth-of-type(1)",
+            "text": "CTO Directives & Interaction Console",
+            "fontPx": 17,
+            "time": 4.125,
+            "seconds": 4.375
+          },
+          {
+            "selector": "div.directive-box",
+            "text": "Directives are routed through the organization’s configured agent and governance workflow.",
+            "fontPx": 17,
+            "time": 4.125,
+            "seconds": 4.375
+          },
+          {
+            "selector": "#s2-audit > div:nth-of-type(1)",
+            "text": "Live Audit Telemetry",
+            "fontPx": 17,
+            "time": 4.25,
+            "seconds": 4.25
+          },
+          {
+            "selector": "#s2-audit > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(1)",
+            "text": "Activity",
+            "fontPx": 17,
+            "time": 4.25,
+            "seconds": 4.25
+          },
+          {
+            "selector": "#s2-approval > div:nth-of-type(1)",
+            "text": "CEO Approval Queue",
+            "fontPx": 17,
+            "time": 4.375,
+            "seconds": 4.125
+          },
+          {
+            "selector": "#s2-health > div:nth-of-type(1)",
+            "text": "System & Provider Health",
+            "fontPx": 17,
+            "time": 4.5,
+            "seconds": 4
+          },
+          {
+            "selector": "#s2-workforce > div:nth-of-type(2) > p:nth-of-type(1)",
+            "text": "Review configured agents and the work assigned to them.",
+            "fontPx": 18,
+            "time": 4,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#s2-directives > div:nth-of-type(2) > p:nth-of-type(1)",
+            "text": "Send an operational directive. Review its response and follow-up state in the Control Room.",
+            "fontPx": 18,
+            "time": 4.125,
+            "seconds": 4.375
+          },
+          {
+            "selector": "#s2-audit > div:nth-of-type(2) > p:nth-of-type(1)",
+            "text": "Follow recorded activity and decisions as workspace events arrive.",
+            "fontPx": 18,
+            "time": 4.25,
+            "seconds": 4.25
+          },
+          {
+            "selector": "#s2-approval > div:nth-of-type(2) > p:nth-of-type(1)",
+            "text": "Inspect pending decisions and choose whether to approve or reject.",
+            "fontPx": 18,
+            "time": 4.375,
+            "seconds": 4.125
+          },
+          {
+            "selector": "#s2-health > div:nth-of-type(2) > p:nth-of-type(1)",
+            "text": "Provider and resource state is reported from configured services.",
+            "fontPx": 18,
+            "time": 4.5,
+            "seconds": 4
+          },
+          {
+            "selector": "#s1-kicker",
+            "text": "NEIMAN / OPERATIONS OS",
+            "fontPx": 20,
+            "time": 0.375,
+            "seconds": 3.125
+          },
+          {
+            "selector": "#s2-kicker",
+            "text": "NEIMAN / CONTROL ROOM",
+            "fontPx": 20,
+            "time": 3.5,
+            "seconds": 5
+          },
+          {
+            "selector": "#s3-kicker",
+            "text": "VISIBLE GOVERNANCE",
+            "fontPx": 20,
+            "time": 8.5,
+            "seconds": 5
+          },
+          {
+            "selector": "#s3-step1 > strong:nth-of-type(1)",
+            "text": "DIRECTIVE",
+            "fontPx": 23,
+            "time": 9,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#s3-step2 > strong:nth-of-type(1)",
+            "text": "WORK",
+            "fontPx": 23,
+            "time": 9.25,
+            "seconds": 4.25
+          },
+          {
+            "selector": "#s3-step3 > strong:nth-of-type(1)",
+            "text": "HUMAN REVIEW",
+            "fontPx": 23,
+            "time": 9.375,
+            "seconds": 4.125
+          },
+          {
+            "selector": "#s3-step4 > strong:nth-of-type(1)",
+            "text": "AUDIT TRAIL",
+            "fontPx": 23,
+            "time": 9.5,
+            "seconds": 4
+          },
+          {
+            "selector": "#s3-caption",
+            "text": "This is a product-flow illustration, not a live run.",
+            "fontPx": 24,
+            "time": 9.875,
+            "seconds": 3.625
+          },
+          {
+            "selector": "#s3-caption > strong:nth-of-type(1)",
+            "text": "Review sensitive actions before they proceed.",
+            "fontPx": 24,
+            "time": 9.875,
+            "seconds": 3.625
+          },
+          {
+            "selector": "#s4-tagline",
+            "text": "INTELLIGENCE IN MOTION.",
+            "fontPx": 24,
+            "time": 14.625,
+            "seconds": 5.375
+          },
+          {
+            "selector": "span.wordmark-mark",
+            "text": "N",
+            "fontPx": 26,
+            "time": 13.5,
+            "seconds": 6.5
+          },
+          {
+            "selector": "#s4-line",
+            "text": "Agent operations. Human approvals. Audit visibility.",
+            "fontPx": 27,
+            "time": 14.25,
+            "seconds": 5.75
+          }
+        ]
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 3.25 s (4.88–8.13 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 4.875,
+        "seconds": 3.25,
+        "floorSeconds": 3,
+        "until": 8.125
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Review sensitive actions before they proceed. This is a p...\" (16 words) is on screen 3.54 s (±0.01 s), under its 3.97 s floor: hold it about 0.5 s + 0.3 s a word (5.30 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Review sensitive actions before they proceed. This is a product-flow illustration, not a live run.",
+        "selector": "#s3-caption",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 110,
+          "y": 782.5,
+          "width": 1411.2,
+          "height": 31
+        },
+        "time": 9.867,
+        "words": 16,
+        "seconds": 3.539,
+        "floorSeconds": 3.975
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 160
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

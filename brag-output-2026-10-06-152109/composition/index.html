@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEIMAN Live</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #080808;
+        font-family: 'Space Grotesk', sans-serif;
+        color: #ffffff;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background-color: #080808;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+        background-size: 36px 36px;
+      }
+      .scene {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 1080px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 80px;
+      }
+      .mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .red-accent {
+        color: #D71921;
+      }
+      .beacon {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #D71921;
+        box-shadow: 0 0 16px #D71921;
+        margin-right: 12px;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 16px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid #262626;
+        font-size: 14px;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #E5E5E5;
+      }
+      .card {
+        background: rgba(18, 18, 18, 0.85);
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
+        border: 1px solid #262626;
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      }
+      .title-hero {
+        font-size: 88px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1.05;
+        text-align: center;
+      }
+      .subtitle {
+        font-size: 24px;
+        color: #A3A3A3;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: -0.01em;
+      }
+      /* Thinking orb animation placeholder */
+      .orb {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #ffffff 0%, #D71921 55%, #000000 100%);
+        box-shadow: 0 0 24px rgba(215, 25, 33, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="18"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Background Audio Track -->
+      <audio
+        id="bg-music"
+        src="assets/music/music.mp3"
+        data-start="0"
+        data-duration="18"
+      ></audio>
+
+      <!-- SCENE 1: Genesis Hook (0s - 4.5s) -->
+      <div id="scene-1" class="scene clip" data-start="0" data-duration="4.5">
+        <div id="s1-badge" class="pill">
+          <span class="beacon"></span>
+          <span>AUTONOMOUS ORGANIZATION OS</span>
+        </div>
+        <h1 id="s1-title" class="title-hero">
+          NEIMAN <span class="red-accent">//</span> LIVE
+        </h1>
+        <p id="s1-sub" class="subtitle">
+          [KERNEL REVISION: v0.1.0 • ZERO-TRUST SUBSTRATE]
+        </p>
+      </div>
+
+      <!-- SCENE 2: Autonomous Agent Swarm & Thinking Orbs (4.0s - 9.0s) -->
+      <div id="scene-2" class="scene clip" data-start="4.0" data-duration="5.0">
+        <div class="pill">
+          <span>SWARM DISPATCH • 32 AUTONOMOUS AGENTS</span>
+        </div>
+        <div class="card-layout">
+          <!-- Card 1 -->
+          <div id="agent-card-1" class="card">
+            <div class="card-header">
+              <span class="mono card-role">ROLE: ARCHITECT</span>
+              <div class="orb"></div>
+            </div>
+            <h3 class="card-title">Apex Coordinator</h3>
+            <p class="card-desc">
+              Synthesizing cross-department roadmaps & delegating high-stakes tasks.
+            </p>
+            <div class="pill pill-reasoning">
+              PHASE: REASONING
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div id="agent-card-2" class="card">
+            <div class="card-header">
+              <span class="mono card-role">ROLE: GOVERNANCE</span>
+              <div class="orb orb-governance"></div>
+            </div>
+            <h3 class="card-title">Sentinel Guard</h3>
+            <p class="card-desc">
+              Verifying constitutional policies & real-time token expenditure caps.
+            </p>
+            <div class="pill pill-governance">
+              POLICY: PASSED
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div id="agent-card-3" class="card">
+            <div class="card-header">
+              <span class="mono card-role">ROLE: SIMULATION</span>
+              <div class="orb orb-simulation"></div>
+            </div>
+            <h3 class="card-title">Nexus Lab</h3>
+            <p class="card-desc">
+              Stress-testing organization dynamics across 10,000 synthetic iterations.
+            </p>
+            <div class="pill card-pill pill-simulation">
+              STATUS: EXECUTING
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 3: Universal Provider Routing (8.5s - 13.5s) -->
+      <div id="scene-3" class="scene clip" data-start="8.5" data-duration="5.0">
+        <div class="pill">
+          <span>INTELLIGENCE EXCHANGE • 10 ACTIVE PROVIDERS</span>
+        </div>
+        <h2 id="s3-headline">
+          UNIVERSAL ROUTING & FAILOVER
+        </h2>
+        <div id="s3-grid" class="grid-layout">
+          <div class="card">
+            <div class="mono card-role">GATEWAY</div>
+            <h4 class="grid-title">Kilo Code</h4>
+            <span class="mono grid-status">● CLOSED (HEALTHY)</span>
+          </div>
+          <div class="card">
+            <div class="mono card-role">REASONING</div>
+            <h4 class="grid-title">DeepSeek-R1</h4>
+            <span class="mono grid-status">● CLOSED (HEALTHY)</span>
+          </div>
+          <div class="card">
+            <div class="mono card-role">AIR-GAPPED</div>
+            <h4 class="grid-title">Ollama Local</h4>
+            <span class="mono grid-status">● ZERO-RETENTION</span>
+          </div>
+          <div class="card">
+            <div class="mono card-role">ACCELERATOR</div>
+            <h4 class="grid-title">Groq LPU</h4>
+            <span class="mono grid-status">● 120ms LATENCY</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 4: Outro Punchline & Beacon (13.0s - 18.0s) -->
+      <div id="scene-4" class="scene clip" data-start="13.0" data-duration="5.0">
+        <div id="s4-beacon">
+          <div id="s4-beacon-inner"></div>
+        </div>
+        <h1 id="s4-logo" class="title-hero">
+          NEIMAN OS
+        </h1>
+        <p id="s4-claim">
+          Built for the post-human org chart.
+        </p>
+        <div id="s4-footer" class="mono footer-text">
+          TAURI DESKTOP READY • STANDALONE PRODUCTION RUNTIME
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene 1 animations (0s - 4.5s)
+      tl.fromTo("#s1-badge", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.2)
+        .fromTo("#s1-title", { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.4)" }, 0.4)
+        .fromTo("#s1-sub", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.8)
+        .to("#scene-1", { opacity: 0, scale: 1.04, duration: 0.5, ease: "power2.in" }, 3.8);
+
+      // Scene 2 animations (4.0s - 9.0s)
+      tl.fromTo("#scene-2", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 4.0)
+        .fromTo("#agent-card-1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.2)
+        .fromTo("#agent-card-2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.6)
+        .fromTo("#agent-card-3", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.0)
+        .to("#scene-2", { opacity: 0, y: -30, duration: 0.5, ease: "power2.in" }, 8.3);
+
+      // Scene 3 animations (8.5s - 13.5s)
+      tl.fromTo("#scene-3", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 8.5)
+        .fromTo("#s3-headline", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 8.7)
+        .fromTo("#s3-grid > div", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, stagger: 0.15, duration: 0.5, ease: "back.out(1.2)" }, 9.1)
+        .to("#scene-3", { opacity: 0, scale: 0.96, duration: 0.5, ease: "power2.in" }, 12.8);
+
+      // Scene 4 animations (13.0s - 18.0s)
+      tl.fromTo("#scene-4", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 13.0)
+        .fromTo("#s4-beacon", { scale: 0, rotation: -45 }, { scale: 1, rotation: 0, duration: 0.7, ease: "back.out(1.7)" }, 13.2)
+        .fromTo("#s4-logo", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 13.6)
+        .fromTo("#s4-claim", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 14.1)
+        .fromTo("#s4-footer", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 14.6);
+
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
