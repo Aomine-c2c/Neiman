@@ -1,0 +1,236 @@
+# Monitoring stack configuration for NEIMAN
+kube-prometheus-stack:
+  enabled: true
+
+  # Prometheus configuration
+  prometheus:
+    prometheusSpec:
+      retention: 30d
+      retentionSize: 50GB
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: fast-storage
+            resources:
+              requests:
+                storage: 100Gi
+      resources:
+        requests:
+          cpu: 500m
+          memory: 2Gi
+        limits:
+          cpu: 2000m
+          memory: 8Gi
+      serviceMonitorSelectorNilUsesHelmValues: false
+      podMonitorSelectorNilUsesHelmValues: false
+      ruleSelectorNilUsesHelmValues: false
+
+  # Grafana configuration
+  grafana:
+    enabled: true
+    adminPassword: "changeme"
+    persistence:
+      enabled: true
+      size: 10Gi
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            url: http://prometheus-operated.NEIMAN-monitoring.svc.cluster.local:9090
+            access: proxy
+            isDefault: true
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+          - name: 'NEIMAN'
+            orgId: 1
+            folder: 'NEIMAN'
+            type: file
+            disableDeletion: false
+            updateIntervalSeconds: 10
+            allowUiUpdates: true
+            options:
+              path: /var/lib/grafana/dashboards/NEIMAN
+    dashboards:
+      NEIMAN:
+        NEIMAN-api-overview:
+          json: |
+            {
+              "dashboard": {
+                "title": "NEIMAN API Overview",
+                "tags": ["NEIMAN", "api"],
+                "timezone": "utc",
+                "panels": [
+                  {
+                    "title": "Request Rate",
+                    "type": "graph",
+                    "datasource": "Prometheus",
+                    "targets": [
+                      {
+                        "expr": "sum(rate(http_requests_total{job=\"NEIMAN-api\"}[5m])) by (method, handler)",
+                        "legendFormat": "{{method}} {{handler}}"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Error Rate",
+                    "type": "graph",
+                    "datasource": "Prometheus",
+                    "targets": [
+                      {
+                        "expr": "sum(rate(http_requests_total{job=\"NEIMAN-api\",status=~\"5..\"}[5m])) by (handler)",
+                        "legendFormat": "{{handler}}"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Latency (p95)",
+                    "type": "graph",
+                    "datasource": "Prometheus",
+                    "targets": [
+                      {
+                        "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{job=\"NEIMAN-api\"}[5m])) by (le, handler))",
+                        "legendFormat": "{{handler}}"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Active Workflows",
+                    "type": "stat",
+                    "datasource": "Prometheus",
+                    "targets": [
+                      {
+                        "expr": "NEIMAN_active_workflows",
+                        "legendFormat": "Active"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Active Councils",
+                    "type": "stat",
+                    "datasource": "Prometheus",
+                    "targets": [
+                      {
+                        "expr": "NEIMAN_active_councils",
+                        "legendFormat": "Active"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Agent Executions",
+                    "type": "graph",
+                    "datasource": "Prometheus",
+                    "targets": [
+                      {
+                        "expr": "sum(rate(NEIMAN_agent_executions_total[5m])) by (status)",
+                        "legendFormat": "{{status}}"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+        NEIMAN-business-metrics:
+          json: |
+            {
+              "dashboard": {
+                "title": "NEIMAN Business Metrics",
+                "tags": ["NEIMAN", "business"],
+                "timezone": "utc",
+                "panels": [
+                  {
+                    "title": "Decisions Made",
+                    "type": "stat",
+                    "datasource": "Prometheus",
+                    "targets": [
+                      {
+                        "expr": "increase(NEIMAN_decisions_total[24h])",
+                        "legendFormat": "Last 24h"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Workflows Completed",
+                    "type": "stat",
+                    "datasource": "Prometheus",
+                    "targets": [
+                      {
+                        "expr": "increase(NEIMAN_workflows_completed_total[24h])",
+                        "legendFormat": "Last 24h"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Resource Utilization",
+                    "type": "gauge",
+                    "datasource": "Prometheus",
+                    "targets": [
+                      {
+                        "expr": "NEIMAN_resource_utilization_percent",
+                        "legendFormat": "Utilization %"
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Memory Items",
+                    "type": "stat",
+                    "datasource": "Prometheus",
+                    "targets": [
+                      {
+                        "expr": "NEIMAN_memory_items_total",
+                        "legendFormat": "Total Items"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+
+  # AlertManager configuration
+  alertmanager:
+    enabled: true
+    alertmanagerSpec:
+      replicas: 2
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: fast-storage
+            resources:
+              requests:
+                storage: 10Gi
+
+  # Default rules
+  defaultRules:
+    create: true
+    rules:
+      alertmanager: true
+      etcd: false
+      general: true
+      kubeApiserver: true
+      kubeApiserverAvailability: true
+      kubeApiserverBurnrate: true
+      kubeApiserverErrorBudget: true
+      kubeApiserverHistogram: true
+      kubeApiserverSlos: true
+      kubeControllerManager: true
+      kubelet: true
+      kubeProxy: true
+      kubeScheduler: true
+      kubeStateMetrics: true
+      kubernetesApps: true
+      kubernetesResources: true
+      kubernetesStorage: true
+      kubernetesSystem: true
+      node: true
+      prometheus: true
+      prometheusOperator: true

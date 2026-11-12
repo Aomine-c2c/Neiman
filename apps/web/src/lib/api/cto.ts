@@ -1,0 +1,238 @@
+/**
+ * Autonomous CTO & Continuous Development Lifecycle Supervisor API Client
+ */
+
+import { api } from './client';
+
+export interface CTOStatus {
+  cto_agent_id: string;
+  cto_agent_name: string;
+  cto_status: string;
+  total_agents: number;
+  available_agents: number;
+  working_agents: number;
+  primary_project_id?: string;
+  active_proposals_count: number;
+  backlog_tasks_count: number;
+  recent_events: Array<{
+    timestamp: string;
+    event_type: string;
+    message: string;
+    task_id?: string;
+  }>;
+}
+
+export interface CTODirectiveRequest {
+  directive: string;
+  priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+  target_repo?: string;
+  document_text?: string;
+  auto_delegate?: boolean;
+  autonomous_execute?: boolean;
+}
+
+export interface CTODirectiveResponse {
+  directive_id?: string;
+  directive?: string;
+  cto_agent_id?: string;
+  cto_agent_name: string;
+  primary_project_id?: string;
+  tasks_created_count: number;
+  tasks: Array<{
+    id: string;
+    title: string;
+    assigned_agent_name?: string;
+    priority: string;
+    status?: string;
+    dependencies?: string[];
+  }>;
+  summary?: string;
+  analysis?: string;
+  intent?: string;
+}
+
+export interface CTOProposedTask {
+  title: string;
+  description: string;
+  assigned_role: string;
+  priority: string;
+  dependencies?: string[];
+}
+
+export interface CTOProposal {
+  id: string;
+  company_id: string;
+  cto_agent_id: string;
+  title: string;
+  category: string;
+  rationale: string;
+  impact_assessment: string;
+  status: 'PROPOSED' | 'APPROVED' | 'DISMISSED';
+  proposed_tasks: CTOProposedTask[];
+  delegated_task_ids: string[];
+  operator_notes?: string;
+  created_at: string;
+  decided_at?: string;
+}
+
+export interface CTOProposalDecisionRequest {
+  decision: 'APPROVED' | 'DISMISSED';
+  notes?: string;
+}
+
+export interface ActiveTaskTelemetry {
+  id: string;
+  title: string;
+  agent_name: string;
+  started_at: string;
+}
+
+export interface SupervisorStatus {
+  company_id: string;
+  is_running: boolean;
+  state: 'PLAYING' | 'PAUSED';
+  active_cycle: number;
+  last_tick_at: string | null;
+  pending_tasks_count: number;
+  in_progress_tasks_count: number;
+  completed_tasks_count: number;
+  active_task?: ActiveTaskTelemetry | null;
+  is_daemon_active: boolean;
+  recent_events: Array<{
+    timestamp: string;
+    event_type: string;
+    message: string;
+    task_id?: string;
+  }>;
+}
+
+export interface CycleResult {
+  cycle: number;
+  status: 'SUCCESS' | 'IDLE' | 'BLOCKED' | 'PAUSED' | 'ERROR';
+  message: string;
+  executed_tasks: Array<{
+    task_id: string;
+    title: string;
+    agent: string;
+    duration_ms: number;
+    steps: number;
+  }>;
+}
+
+export interface ExecutiveDelegatedTaskItem {
+  id: string;
+  title: string;
+  assigned_agent?: string;
+  assigned_agent_name?: string;
+  role?: string;
+  priority: string;
+  status?: string;
+  dependencies?: string[];
+}
+
+export interface ExecutiveThreadMessageItem {
+  id: string;
+  thread_id: string;
+  sender_id?: string | null;
+  sender_name: string;
+  sender_role: string;
+  to_name: string;
+  to_role: string;
+  cc_names: string[];
+  subject: string;
+  body: string;
+  message_type: 'OPERATOR' | 'CTO_DELEGATION' | 'AGENT_REPLY' | 'COUNCIL_REVIEW' | string;
+  stance?: string | null;
+  confidence?: number | null;
+  delegated_tasks: ExecutiveDelegatedTaskItem[];
+  evidence: string[];
+  risks: string[];
+  created_at: string;
+}
+
+export interface ExecutiveThread {
+  thread_id: string;
+  subject: string;
+  thread_type: 'CTO_DIRECTIVE' | 'AGENT_DIRECT' | 'COUNCIL_DEBATE' | string;
+  status: 'ACTIVE' | 'DELEGATED' | 'DELIBERATING' | 'RESOLVED' | string;
+  participants: Array<{
+    id: string;
+    name: string;
+    role: string;
+  }>;
+  messages: ExecutiveThreadMessageItem[];
+  spec_summary?: string | null;
+  technical_rationale?: string | null;
+  extracted_tasks: ExecutiveDelegatedTaskItem[];
+  disagreements: Array<{
+    topic: string;
+    mitigation: string;
+  }>;
+  adr_status: string;
+  deliberation_id?: string | null;
+  updated_at: string;
+}
+
+export interface ExecutiveThreadSendRequest {
+  thread_id?: string | null;
+  subject?: string | null;
+  target_agent_id?: string | null;
+  cc_agent_ids?: string[];
+  body: string;
+  priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+  auto_delegate?: boolean;
+}
+
+export const ctoApi = {
+  getStatus: (companyId: string): Promise<CTOStatus> =>
+    api.get<CTOStatus>(`/api/v1/companies/${companyId}/cto/status`),
+
+  sendDirective: (companyId: string, req: CTODirectiveRequest): Promise<CTODirectiveResponse> =>
+    api.post<CTODirectiveResponse>(`/api/v1/companies/${companyId}/cto/directive`, req),
+
+  getThreads: (companyId: string): Promise<ExecutiveThread[]> =>
+    api.get<ExecutiveThread[]>(`/api/v1/companies/${companyId}/cto/threads`),
+
+  sendThreadMessage: (
+    companyId: string,
+    req: ExecutiveThreadSendRequest
+  ): Promise<ExecutiveThread> =>
+    api.post<ExecutiveThread>(`/api/v1/companies/${companyId}/cto/threads/message`, req),
+
+  getProposals: (companyId: string): Promise<CTOProposal[]> =>
+    api.get<CTOProposal[]>(`/api/v1/companies/${companyId}/cto/proposals`),
+
+  decideProposal: (
+    companyId: string,
+    proposalId: string,
+    req: CTOProposalDecisionRequest
+  ): Promise<CTOProposal> =>
+    api.post<CTOProposal>(
+      `/api/v1/companies/${companyId}/cto/proposals/${proposalId}/decide`,
+      req
+    ),
+
+  getSupervisorStatus: (companyId: string): Promise<SupervisorStatus> =>
+    api.get<SupervisorStatus>(`/api/v1/companies/${companyId}/cto/supervisor/status`),
+
+  toggleSupervisor: (
+    companyId: string,
+    action: 'PLAY' | 'PAUSE' | 'TICK'
+  ): Promise<SupervisorStatus> =>
+    api.post<SupervisorStatus>(`/api/v1/companies/${companyId}/cto/supervisor/toggle`, {
+      action,
+    }),
+
+  triggerTick: (companyId: string): Promise<CycleResult> =>
+    api.post<CycleResult>(`/api/v1/companies/${companyId}/cto/supervisor/tick`),
+
+  getAgentTelemetry: (companyId: string, agentId: string): Promise<unknown[]> =>
+    api.get<unknown[]>(`/api/v1/companies/${companyId}/cto/telemetry/${agentId}`),
+
+  enhancePrompt: (
+    companyId: string,
+    prompt: string,
+    context?: string
+  ): Promise<{ enhanced_prompt: string; provider?: string | null; model?: string | null }> =>
+    api.post(`/api/v1/companies/${companyId}/cto/enhance-prompt`, { prompt, context }),
+};

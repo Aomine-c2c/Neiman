@@ -1,0 +1,70 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: NEIMAN
+
+resources:
+  - ../../base/namespaces.yaml
+  - ../../base/config.yaml
+  - ../../base/NEIMAN-api.yaml
+  - ../../base/NEIMAN-web.yaml
+  - ../../base/ingress.yaml
+  - ../../base/hpa.yaml
+  - ../../base/rbac.yaml
+
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: NEIMAN-api
+        namespace: NEIMAN
+      spec:
+        replicas: 2
+        template:
+          spec:
+            containers:
+              - name: api
+                resources:
+                  requests:
+                    cpu: "250m"
+                    memory: "256Mi"
+                  limits:
+                    cpu: "1000m"
+                    memory: "1Gi"
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: NEIMAN-web
+        namespace: NEIMAN
+      spec:
+        replicas: 2
+        template:
+          spec:
+            containers:
+              - name: web
+                resources:
+                  requests:
+                    cpu: "100m"
+                    memory: "128Mi"
+                  limits:
+                    cpu: "500m"
+                    memory: "512Mi"
+
+configMapGenerator:
+  - name: NEIMAN-config
+    behavior: merge
+    literals:
+      - ENVIRONMENT=staging
+      - DEBUG=true
+
+images:
+  - name: ghcr.io/ORG/NEIMAN-api
+    newTag: staging
+  - name: ghcr.io/ORG/NEIMAN-web
+    newTag: staging
+
+commonLabels:
+  environment: staging
+  managed-by: kustomize
